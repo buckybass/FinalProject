@@ -1,0 +1,64 @@
+extends layout/form
+
+block content
+    a(href="/") <--เข้าสู่ระบบ
+    h4 สมัครสมาชิก
+    include components/alert
+    form(action="/register", method="post")
+      .row.g-2
+        .col-md-6.form-floating
+          input#floatingEmail.form-control(type='email' placeholder='name@example.com' name="email")
+          label(for='floatingEmail') Email
+        .col-md-6.form-floating
+          input#floatingPassword.form-control(type="password", name="password" placeholder="รหัสผ่าน")
+          label(for='floatingPassword') รหัสผ่าน
+      .row.mt-2.g-2
+        .col-md-6
+        .col-md-6.form-floating
+          input#floatingConfirmPassword.form-control(type="password", name="confirmpassword" placeholder="รหัสผ่าน")
+          label(for='floatingConfirmPassword') ยืนยันรหัสผ่าน
+      .row.mt-2.g-2
+        .col-md-6.form-floating
+          input#floatingConfiFirstname.form-control(type="text", name="firstname" placeholder="ชื่อ")
+          label(for='floatingFirstname') ชื่อ
+        .col-md-6.form-floating
+          input#floatingLastname.form-control(type="text", name="lastname" placeholder="นามสกุล")
+          label(for='floatingLastname') นามสกุล
+      .row.mt-2.g-2
+        .col-md-12.form-floating
+          input#floatingNumber.form-control(type="number", name="phonenumber" placeholder="เบอร์มือถือ")
+          label(for='floatingNumber') เบอร์มือถือ
+      .row.mt-1.g-2
+        .col-md-6.form-floating
+          select#floatingSelect.form-select(name='faculty')
+            option(selected='') กรุณาเลือก
+            option(value='บริการธุรกิจและเทคโนโลยีสารสนเทศ') บริการธุรกิจและเทคโนโลยีสารสนเทศ
+            option(value='วิทยาศาสตร์') วิทยาศาสตร์
+            option(value='วิศวะกรรม') วิศวะกรรม
+          label(for="floatingSelect") เลือกคณะ
+        .col-md-6.form-floating
+          select#floatingSelect.form-select(name='branch')
+            option(selected='') กรุณาเลือก
+            option(value='ระบบสารสนเทศ') ระบบสารสนเทศ
+            option(value='บัญชี') บัญชี
+            option(value='...') ...
+          label(for="floatingSelect") เลือกสาขา
+      button.btn.btn-primary.mt-3 สมัครสมาชิก
+
+
+      //- label.form-label(for="email") อีเมล
+      //- input.form-control(id="email" type="email", name="email" required)
+      //- .mt-2
+      //-   label.form-label(for="password") รหัสผ่าน
+      //-   input.form-control(id="password" type="password", name="password" required)
+      //- .mt-2
+      //-   label.form-label(for="confirmpassword") ยืนยันรหัสผ่าน
+      //-   input.form-control(id="confirmpassword" type="password", name="confirmpassword" required)
+      //- .mt-2
+      //-   label.form-label(for="email") อีเมล
+      //-   input.form-control(id="email" type="email", name="email" required)
+
+      //- p=err
+      //- .mt-2
+      //-   button.btn.btn-primary สมัครสมาชิก
+

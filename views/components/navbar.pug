@@ -1,0 +1,19 @@
+.row.justify-content-between.align-items-center.text-light(style='background-color:#282424;;')
+  .col-md-2.m-2
+    a(href="/", style='text-decoration:none; color:white;')
+      h4 RMUTSB
+  .col-md-6.d-flex.justify-content-center
+    a.m-3.nav-link(href="/") หน้าแรก
+    a.m-3.nav-link(href="") ค้นหา
+    a.m-3.nav-link(href="") ลงทะเบียนปริญญานิพนธ์
+  .col-md-2.text-end.m-2
+    .dropdown
+      button.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+         user #{user.firstname}
+      ul.dropdown-menu
+        li
+          a.dropdown-item(href='/user') ข้อมูลสมาชิก
+        li
+          a.dropdown-item(href='#') อื่นๆ
+        li
+          a.dropdown-item.text-danger(href='/logout') ออกจากระบบ
