@@ -1,7 +1,19 @@
 extends _html
 
 block body
-  .bg-dark.bg-gradient
+  style.
+    body, html {
+    height: 100%;
+    margin: 0;
+    }
+    .bg {
+    background-image: url("https://bestanimations.com/media/books/402238143pretty-book-bench-nature-water-outdoors-animated-gif.gif");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+  .bg
     .container.d-flex.min-vh-100.align-items-center.justify-content-center
       .card(style='width:600px')
         .card-body
