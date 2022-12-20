@@ -17,4 +17,5 @@ router.get('/register', require('../controllers/getRegister'))
 router.post('/register', require('../controllers/postRegister'))
 router.get('/logout', require('../controllers/logout'))
 router.get('/user', require('../controllers/user'))
+router.get('/book', require('../controllers/book'))
 module.exports = router
