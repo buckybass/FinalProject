@@ -1,23 +1,27 @@
-doctype html
-html
-  head
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    style.
-      body, html {
-      height: 100%;
-      margin: 0;
-      }
-      .bg {
-      /* The image used */
-      background-image: url("https://bestanimations.com/media/books/402238143pretty-book-bench-nature-water-outdoors-animated-gif.gif");
-      /* Full height */
-      height: 100%;
-      /* Center and scale the image nicely */
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      }
-  body
-    .bg
-    p
-      | This example creates a full page background image. Try to resize the browser window to see how it always will cover the full screen (when scrolled to top), and that it scales nicely on all screen sizes.
+extends layout/main
+block content
+  .container.mt-3
+    .card
+      form(action="/bookcreate" method="post" enctype="multipart/form-data").m-3
+        h1.text-center ลงทะเบียนปริญญานิพนธ์
+        h4 ชื่อ : #{user.firstname}
+        h4 นามสกุล : #{user.lastname}
+        h4 คณะ : #{user.faculty}
+        h4 สาขา : #{user.branch}
+        .form-floating
+          input(type="hidden", name="user" value=user)
+          input#floatingbookname.form-control(type="text", name="bookname" placeholder="ชื่อ")
+          label(for='floatingbookname') ชื่อปริญญานิพนธ์
+        .form-floating.mt-3
+          select#floatingSelect.form-select(name='teacher')
+            option(selected='') กรุณาเลือก
+            option(value='อาจารย์มงคล') อาจารย์มงคล
+            option(value='อาจารย์นุชรัตน์') อาจารย์นุชรัตน์
+            option(value='อาจารย์ไพรฑูรณ์') อาจารย์ไพรฑูรณ์
+          label(for="floatingSelect") อาจารย์ที่ปรึกษา
+        .mt-3
+          label(for="bookfile") เพิ่มไฟล์
+          input.form-control#bookfile(type="file", name="bookfile" required)
+        .mt-3.text-center
+          button.btn.btn-primary(type="submit")  ลงทะเบียน
+

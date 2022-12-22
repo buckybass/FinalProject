@@ -8,6 +8,7 @@ const connectFlash = require('connect-flash')
 // const redis = require('redis')
 const passport = require('passport')
 const app = express()
+const bodyParser = require('body-parser')
 
 dotenv.config()
 
@@ -18,6 +19,8 @@ mongoose.connect('mongodb+srv://Admin:Password@monkey.yasgbdt.mongodb.net/?retry
 //   url: process.env.REDIS_URL
 // })
 // redisClient.connect().catch()
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, '../views'))
 

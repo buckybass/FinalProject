@@ -4,6 +4,22 @@ const mustLogin = require('../middlewares/mustLogin')
 const router = Router()
 const postLogin = require('../controllers/postLogin')
 const scopeFacebook = ['email']
+const multer = require('multer')
+const path = require('path')
+
+const storage = multer.diskStorage({
+  destination (req, file, next) {
+    next(null, path.join(__dirname, '../public/book'))
+  },
+  filename (req, file, next) {
+    next(null, file.originalname)
+  }
+})
+
+const upload = multer({
+  storage
+  // dest: path.join(__dirname, '../public/book')
+})
 
 router.get('/', mustLogin, require('../controllers/index'))
 router.post('/update-password', mustLogin, require('../controllers/updatePassword'))
@@ -16,6 +32,7 @@ router.get('/login/google/callback', postLogin('google'))
 router.get('/register', require('../controllers/getRegister'))
 router.post('/register', require('../controllers/postRegister'))
 router.get('/logout', require('../controllers/logout'))
-router.get('/user', require('../controllers/user'))
-router.get('/book', require('../controllers/book'))
+router.get('/user', mustLogin, require('../controllers/user'))
+router.get('/book', mustLogin, require('../controllers/book'))
+router.post('/bookcreate', mustLogin, upload.single('bookfile'), require('../controllers/bookcreate'))
 module.exports = router
