@@ -19,8 +19,9 @@ mongoose.connect('mongodb+srv://Admin:Password@monkey.yasgbdt.mongodb.net/?retry
 //   url: process.env.REDIS_URL
 // })
 // redisClient.connect().catch()
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(bodyParser.raw())
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, '../views'))
 

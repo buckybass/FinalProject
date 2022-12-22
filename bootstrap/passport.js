@@ -86,7 +86,6 @@ passport.use(new GoogleStrategy({
   passReqToCallback: true
 }, async (req, accessToken, refreshToken, profile, next) => {
   try {
-    console.log(profile._json)
     if (!profile._json.email) {
       return next(null, false, 'กรุณายินยอมให้เข้าถึงอีเมลในเฟสบุคเนื่องจากคุณปฎิเสธ คลิก<a>ลิ้งนี้</a>เพื่อยินยอมใหม่')
     }
