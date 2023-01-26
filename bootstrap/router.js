@@ -21,7 +21,7 @@ const upload = multer({
   // dest: path.join(__dirname, '../public/book')
 })
 
-router.get('/', mustLogin, require('../controllers/index'))
+router.get('/', require('../controllers/index'))
 router.post('/update-password', mustLogin, require('../controllers/updatePassword'))
 router.get('/login', require('../controllers/getLogin'))
 router.post('/login', postLogin('local'))
@@ -35,4 +35,7 @@ router.get('/logout', require('../controllers/logout'))
 router.get('/user', mustLogin, require('../controllers/user'))
 router.get('/book', mustLogin, require('../controllers/book'))
 router.post('/bookcreate', mustLogin, upload.single('bookfile'), require('../controllers/bookcreate'))
+router.get('/status', mustLogin, require('../controllers/status.js'))
+router.get('/about', require('../controllers/about'))
+router.get('/manage', require('../controllers/manage'))
 module.exports = router

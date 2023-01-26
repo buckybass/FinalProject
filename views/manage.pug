@@ -1,0 +1,74 @@
+extends layout/main
+block content
+  .container
+    style.
+      body {
+      margin: 0;
+      color:white;
+      }
+      .sidebar {
+      margin: 0;
+      padding: 0;
+      width: 200px;
+      background-color:#282424;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+      }
+      .sidebar a {
+      display: block;
+      color: black;
+      padding: 16px;
+      text-decoration: none;
+      color:white;
+      }
+      .sidebar a.active {
+      background-color: purple;
+      color: white;
+      }
+      .sidebar a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+      }
+      div.content {
+      margin-left: 200px;
+      padding: 1px 16px;
+      height: 1000px;
+      }
+      @media screen and (max-width: 700px) {
+      .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      }
+      .sidebar a {float: left;}
+      div.content {margin-left: 0;}
+      }
+      @media screen and (max-width: 400px) {
+      .sidebar a {
+      text-align: center;
+      float: none;
+      }
+      }
+  body
+      .sidebar
+        a.active(href='#home') ข้อมูลปริญญานิพนธ์
+        a(href='#news') ข้อมูลคณะ
+        a(href='#contact') ข้อมูลอาจารย์
+        a(href='#about') ข้อมูลสมาชิก
+      .container
+        .card.mt-3
+          .card-body
+              table.table
+                thead
+                  tr
+                    th(scope='col')
+                    th(scope='col') ชื่อปริญญานิพนธ์
+                    th(scope='col') ผู้จัดทำ
+                    th(scope='col') สถานะ
+                tbody
+                  tr
+                    th(scope='row') 1
+                    td
+                    td #{user.firstname} #{user.lastname}
+                    td true or false

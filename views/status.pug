@@ -1,0 +1,21 @@
+extends layout/main
+block content
+  .container.mt-3
+    .card
+      .card-body
+          h1.text-center สถานะการลงทะเบียน
+          table.table
+            thead
+              tr
+                th(scope='col')
+                th(scope='col') ชื่อปริญญานิพนธ์
+                th(scope='col') ผู้จัดทำ
+                th(scope='col') สถานะ
+            tbody
+              tr
+                th(scope='row') 1
+                td
+                td #{user.firstname} #{user.lastname}
+                td true or false
+
+

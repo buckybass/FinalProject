@@ -8,7 +8,11 @@ const schema = new Schema({
   branch: String,
   teacher: String,
   bookname: String,
-  filepath: String
+  filepath: String,
+  approve: {
+    type: Boolean,
+    default: false
+  }
 }, { timestamps: true })
 
 module.exports = model('Book', schema)

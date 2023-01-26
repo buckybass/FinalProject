@@ -2,7 +2,10 @@ extends layout/main
 block content
   .container.mt-3
     include components/alert
-    .card
+    h1.text-light ระบบฐานข้อมูลปริญญานิพนธ์
+    h4.text-light ระบบสารสนเทศเพื่อการบริหารจัดการข้อมูลปริญญานิพนธ์ บัณฑิตมหาวิทยาลัยราชมงคลสุวรรณภูมิ เพื่อประกอบการตัดสินใจของผู้บริหารและผู้ปฏิบัติงานในเรื่องที่เกี่ยวข้อง
+    a.btn.btn-light(href="/about") อ่านเพิ่มเติม
+    .card.mt-3
       .card-body
         form
           input.form-control(type="text", name="",placeholder="ค้นหาเลย")
@@ -10,9 +13,12 @@ block content
             .col-md-6
               select#autoSizingSelect.form-select(name='faculty')
                 option(selected='') เลือกคณะ
-                option(value='บริการธุรกิจและเทคโนโลยีสารสนเทศ') บริการธุรกิจและเทคโนโลยีสารสนเทศ
-                option(value='วิทยาศาสตร์') วิทยาศาสตร์
-                option(value='วิศวะกรรม') วิศวะกรรม
+                option(value='คณะครุศาสตร์อุตสาหกรรม') คณะครุศาสตร์อุตสาหกรรม
+                option(value='คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร') คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร
+                option(value='คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ') คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ
+                option(value='คณะวิทยาศาสตร์และเทคโนโลยี') คณะวิทยาศาสตร์และเทคโนโลยี
+                option(value='คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์') คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์
+                option(value='คณะศิลปศาสตร์') คณะศิลปศาสตร์
             .col-md-6
              select#autoSizingSelect.form-select(name='branch')
                 option(selected='') เลือกสาขา
@@ -21,15 +27,58 @@ block content
                 option(value='...') ...
           input.btn.btn-success.mt-2(type="button", value="ค้นหา")
     .row.mt-3
-      .col-md-4
-        .card.card-body
-          h1 What is Lorem Ipsum?
-          p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-      .col-md-4
-        .card.card-body
-          h1 Why do we use it?
-          p It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).      .card.col-md-4
-      .col-md-4
-        .card.card-body
-          h1 Where does it come from?
-          p Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      .col-md-6
+        ul.list-group
+          li.list-group-item.list-group-item-info
+            h4 อาจารย์ที่ปรึกษา
+          li.list-group-item
+            a(href="/") คณะครุศาสตร์อุตสาหกรรม
+          li.list-group-item
+            a(href="/") คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร
+          li.list-group-item
+            a(href="/") คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ
+          li.list-group-item
+            a(href="/") คณะวิทยาศาสตร์และเทคโนโลยี
+          li.list-group-item
+            a(href="/") คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์
+          li.list-group-item
+            a(href="/") คณะศิลปศาสตร์
+      .col-md-6
+        ul.list-group
+          li.list-group-item.list-group-item-info
+            h4 นักศึกษา
+          li.list-group-item
+            a(href="/") คณะครุศาสตร์อุตสาหกรรม
+          li.list-group-item
+            a(href="/") คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร
+          li.list-group-item
+            a(href="/") คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ
+          li.list-group-item
+            a(href="/") คณะวิทยาศาสตร์และเทคโนโลยี
+          li.list-group-item
+            a(href="/") คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์
+          li.list-group-item
+            a(href="/") คณะศิลปศาสตร์
+    .card.mt-3
+      .card-body
+        .row
+          .col-md-3.text-center
+            h1 นักศึกษา
+            .d(style='height:240px')
+              img.img-thumbnail(src="/tar.jpg" style="width:170px", alt="" )
+            p จัดเก็บประวัตินักศึกษา บัณฑิตมหาวิทยาลัยราชมงคลสุวรรณภูมิ ที่จัดทำวิทยานิพนธ์หรือการค้นคว้าอิสระ พร้อมรายการความก้าวหน้าในการดำเนินการจัดสอบ
+          .col-md-1.d-flex.justify-content-center
+            div(style='border-left: 3px solid purple;height: 410px;')
+          .col-md-3.text-center
+            h1 อาจารย์
+            .d(style='height:240px')
+              img.img-thumbnail(src="/teacher.png" style="width:400px", alt="")
+            p จัดเก็บประวัติอาจารย์ที่ปรึกษา ประวัติการเป็นอาจารย์ที่ปรึกษา ประวัติการศึกษา และประวัติความเชี่ยวชาญเพื่อเป็นฐานข้อมูลในการตัดสินใจในการเลือกอาจารย์ที่ปรึกษา
+          .col-md-1.d-flex.justify-content-center
+            div(style='border-left: 3px solid purple;height: 410px;')
+          .col-md-3.text-center
+            h1 ปริญญานิพนธ์
+            .d(style='height:240px')
+              img.img-thumbnail(src="/thesis.jpg" style="width:350px", alt="")
+            p จัดเก็บหัวข้อวิทยานิพนธ์ ผู้จัดทำ อาจารย์ที่ปรึกษา คณะกรรมการสอบ วันที่สอบโครงร่าง และวันที่สอบจบ
+
