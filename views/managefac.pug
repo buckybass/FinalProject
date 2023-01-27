@@ -1,0 +1,12 @@
+extends layout/main
+block content
+  .row
+    .col-md-3
+      include ./components/sidebar
+      .sidebar
+        a(href='/managebook') ข้อมูลปริญญานิพนธ์
+        a.active(href='/managefac') ข้อมูลคณะ
+        a(href='/manageteacher') ข้อมูลอาจารย์
+        a(href='/manageuser') ข้อมูลสมาชิก
+    .col-md-7
+      .container

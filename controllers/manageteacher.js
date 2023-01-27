@@ -1,5 +1,5 @@
 module.exports = (req, res) => {
-  res.render('manage', {
+  res.render('manageteacher', {
     user: req.user
   })
 }

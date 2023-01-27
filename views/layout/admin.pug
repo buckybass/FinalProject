@@ -2,5 +2,9 @@ extends _html
 
 block body
     include ../components/navbar
-    include ../components/sidebar
-    block content
+    .row
+      .col-md-3
+        include ../components/sidebar
+      .col-md-7
+        .container
+        block content
