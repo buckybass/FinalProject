@@ -9,4 +9,35 @@ block content
         a(href='/manageteacher') ข้อมูลอาจารย์
         a(href='/manageuser') ข้อมูลสมาชิก
     .col-md-7
-      .container
+      .container.mt-3
+      include components/alert
+        ul.list-group
+          li.list-group-item
+            h1.text-center ข้อมูลคณะทั้งหมด
+          li.list-group-item.list-group-item-info.d-flex.justify-content-between
+            h4 คณะ
+            form(action="/addfaculty", method="post")
+              .input-group
+                input.form-control(type="text" name="faculty_name" placeholder="เพิ่มคณะ" required)
+                button.btn.btn-success(type="submit") +
+          each facultys in faculty
+            li.list-group-item.d-flex.justify-content-between.align-items-center
+              span.me-auto=facultys.name
+              form.d-none.me-auto(action=`/editfaculty/${facultys._id}` method="post")
+                .input-group
+                  input.form-control.form-control-sm(type="text" name="faculty_name" value=facultys.name)
+                  button.btn.btn-success.btn-sm.me-3 บันทึก
+              button.btn.btn-warning.btn-sm.me-1(type="button" onclick="editList(event)") แก้ไข
+              div(style="width:5px")
+              form(action=`/deletefaculty/${facultys._id}`, method="get")
+                button.btn.btn-sm.btn-danger(type="submit" onclick='confirm("ต้องการลบ")') ลบ
+  script.
+      function editList (event) {
+        const parent = event.target.parentNode
+        const form = parent.querySelector('form')
+        const span = parent.querySelector('span')
+        form.classList.toggle('d-none')
+        span.classList.toggle('d-none')
+        event.target.innerText = event.target.innerText === 'แก้ไข' ? 'ยกเลิก' : 'แก้ไข'
+      }
+

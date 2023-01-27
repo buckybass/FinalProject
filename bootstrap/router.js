@@ -38,7 +38,10 @@ router.post('/bookcreate', mustLogin, upload.single('bookfile'), require('../con
 router.get('/status', mustLogin, require('../controllers/status.js'))
 router.get('/about', require('../controllers/about'))
 router.get('/managebook', mustLogin, require('../controllers/managebook'))
-router.get('/managefac', mustLogin, require('../controllers/managefac'))
+router.get('/managefac', require('../controllers/faculty/managefac'))
+router.post('/addfaculty', require('../controllers/faculty/addfaculty'))
+router.post('/editfaculty/:id', require('../controllers/faculty/editfaculty'))
+router.get('/deletefaculty/:id', require('../controllers/faculty/deletefaculty'))
 router.get('/manageteacher', mustLogin, require('../controllers/manageteacher'))
 router.get('/manageuser', mustLogin, require('../controllers/manageuser'))
 module.exports = router
