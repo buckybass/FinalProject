@@ -8,6 +8,7 @@ const schema = new Schema({
   branch: String,
   teacher: String,
   bookname: String,
+  filename: String,
   filepath: String,
   approve: {
     type: Boolean,

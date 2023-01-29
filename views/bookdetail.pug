@@ -1,0 +1,22 @@
+extends layout/main
+block content
+  .container.mt-3
+    .card
+      .card-body
+        ul.list-group
+          li.list-group-item.list-group-item-info
+            h1.text-center หัวข้อปริญญานิพนธ์ : #{book.bookname}
+          li.list-group-item.d-flex
+            div(style="width:120px") ชื่อนักศึกษา
+            div : #{book.firstname + ' ' + book.lastname}
+          li.list-group-item.d-flex
+            div(style="width:120px") อาจารย์ที่ปรึกษา
+            div : #{book.teacher}
+          li.list-group-item.d-flex
+            div(style="width:120px") คณะ
+            div : #{book.faculty}
+          li.list-group-item.d-flex
+            div(style="width:120px") สาขา
+            div : #{book.branch}
+          .text-center
+            iframe(style='width:550px;height:350px', src='https://online.anyflip.com/wwcwx/usii/index.html', seamless='seamless', scrolling='no', frameborder='0', allowtransparency='true', allowfullscreen='true')

@@ -1,0 +1,48 @@
+extends layout/main
+block content
+  .container.mt-3
+    include components/alert
+    h1.text-light ค้นหา  ฐานข้อมูลปริญญานิพนธ์
+    .card.mt-3
+      .card-body
+        form
+          input.form-control(type="text", name="",placeholder="ค้นหาเลย")
+          .row.mt-3
+            .col-md-6
+              select#autoSizingSelect.form-select(name='faculty')
+                option(selected='') เลือกคณะ
+                option(value='คณะครุศาสตร์อุตสาหกรรม') คณะครุศาสตร์อุตสาหกรรม
+                option(value='คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร') คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร
+                option(value='คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ') คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ
+                option(value='คณะวิทยาศาสตร์และเทคโนโลยี') คณะวิทยาศาสตร์และเทคโนโลยี
+                option(value='คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์') คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์
+                option(value='คณะศิลปศาสตร์') คณะศิลปศาสตร์
+            .col-md-6
+             select#autoSizingSelect.form-select(name='branch')
+                option(selected='') เลือกสาขา
+                option(value='ระบบสารสนเทศ') ระบบสารสนเทศ
+                option(value='บัญชี') บัญชี
+                option(value='...') ...
+          input.btn.btn-success.mt-2(type="button", value="ค้นหา")
+    .card.mt-3
+      .card-body
+        h1.text-center ข้อมูลปริญญานิพนธ์ทั้งหมด
+        table.table
+          thead
+            tr
+              th(scope='col')
+              th(scope='col') ชื่อปริญญานิพนธ์
+              th(scope='col') ผู้จัดทำ
+              th(scope='col') คณะ
+              th(scope='col') สาขา
+          tbody
+            -let i=0
+            each books in book
+              tr
+                th(scope='row')=i=i+1
+                td
+                  a(href=`/book/detail/${books._id}`) #{books.bookname}
+                td=books.firstname+' '+books.lastname
+                td=books.faculty
+                td=books.branch
+

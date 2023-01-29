@@ -10,3 +10,28 @@ block content
         a.active(href='/manageuser') ข้อมูลสมาชิก
     .col-md-7
       .container
+        .card.mt-3
+          .card-body
+            h1.text-center ข้อมูลสมาชิกทั้งหมด
+            -let i = 0
+              table.table.mt-3
+                thead
+                  tr
+                    th(scope='col') ลำดับ
+                    th(scope='col') ชื่อ
+                    th(scope='col') สกุล
+                    th(scope='col') คณะ
+                    th(scope='col') สาขา
+                    th(scope='col')
+                tbody
+                  each Users in User
+                    tr
+                      th(scope='row')=i=i+1
+                      td=Users.firstname
+                      td=Users.lastname
+                      td=Users.faculty
+                      td=Users.branch
+                      td.d-flex
+                        a.btn.btn-warning.btn-sm(href="") แก้ไข
+                        div(style="width:5px")
+                        a.btn.btn-danger.btn-sm(href="") ลบ

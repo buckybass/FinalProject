@@ -1,5 +1,10 @@
+const Users = require('../models/Users')
+
 module.exports = (req, res) => {
-  res.render('manageuser', {
-    user: req.user
+  Users.find().exec((_err, doc) => {
+    res.render('manageuser', {
+      user: req.user,
+      User: doc
+    })
   })
 }

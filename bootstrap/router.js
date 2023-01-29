@@ -44,4 +44,6 @@ router.post('/editfaculty/:id', require('../controllers/faculty/editfaculty'))
 router.get('/deletefaculty/:id', require('../controllers/faculty/deletefaculty'))
 router.get('/manageteacher', mustLogin, require('../controllers/manageteacher'))
 router.get('/manageuser', mustLogin, require('../controllers/manageuser'))
+router.get('/search', require('../controllers/search'))
+router.get('/book/detail/:id', require('../controllers/bookdetail'))
 module.exports = router
