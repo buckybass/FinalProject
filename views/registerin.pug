@@ -1,9 +1,14 @@
 extends layout/form
 block content
-    a(href="/login") <--เข้าสู่ระบบ
+    a.btn.btn-secondary(href="/login") <
     h4 สมัครสมาชิก
     include components/alert
-    form(action="/register", method="post")
+    .btn-group.btn-group-toggle.d-flex.justify-content-center(data-toggle='buttons')
+      a.btn.btn-secondary(href="/registerout")
+        |  บุคคลนอกสาขา
+      a.btn.btn-secondary.active(href="/registerin")
+        |  นักศึกษาในสาขา
+    form.mt-3(action="/register", method="post")
       .row.g-2
         .col-md-6.form-floating
           input#floatingEmail.form-control(type='email' placeholder='name@example.com' name="email")
@@ -27,22 +32,12 @@ block content
         .col-md-12.form-floating
           input#floatingNumber.form-control(type="number", name="phonenumber" placeholder="เบอร์มือถือ")
           label(for='floatingNumber') เบอร์มือถือ
-      .row.mt-1.g-2
-        .col-md-6.form-floating
-          select#floatingSelect.form-select(name='faculty')
-            option(selected='') กรุณาเลือก
-            option(value='บริการธุรกิจและเทคโนโลยีสารสนเทศ') บริการธุรกิจและเทคโนโลยีสารสนเทศ
-            option(value='วิทยาศาสตร์') วิทยาศาสตร์
-            option(value='วิศวะกรรม') วิศวะกรรม
-          label(for="floatingSelect") เลือกคณะ
-        .col-md-6.form-floating
-          select#floatingSelect.form-select(name='branch')
-            option(selected='') กรุณาเลือก
-            option(value='ระบบสารสนเทศ') ระบบสารสนเทศ
-            option(value='บัญชี') บัญชี
-            option(value='...') ...
-          label(for="floatingSelect") เลือกสาขา
-      button.btn.btn-primary.mt-3 สมัครสมาชิก
+      .row.mt-2.g-2
+        .col-md-12.form-floating
+          input#floatingNumber.form-control(type="number", name="studentnumber" placeholder="รหัสนักศึกษา")
+          label(for='floatingNumber') รหัสนักศึกษา
+      .d-flex.justify-content-center
+        button.btn.btn-primary.mt-3 สมัครสมาชิก
 
 
       //- label.form-label(for="email") อีเมล

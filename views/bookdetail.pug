@@ -13,10 +13,14 @@ block content
             div(style="width:120px") อาจารย์ที่ปรึกษา
             div : #{book.teacher}
           li.list-group-item.d-flex
-            div(style="width:120px") คณะ
-            div : #{book.faculty}
-          li.list-group-item.d-flex
             div(style="width:120px") สาขา
             div : #{book.branch}
-          .text-center
+          li.list-group-item.d-flex
+            div(style="width:120px") คณะ
+            div : #{book.faculty}
+          .text-center.mt-3
             iframe(style='width:550px;height:350px', src='https://online.anyflip.com/wwcwx/usii/index.html', seamless='seamless', scrolling='no', frameborder='0', allowtransparency='true', allowfullscreen='true')
+          .d-flex.justify-content-center.mt-3
+            a.btn.btn-info(href="") ขอสิทธิ์อ้างอิงข้อมูล
+            div(style="width:20px")
+            a.btn.btn-info(href="") ดาวน์โหลด

@@ -33,8 +33,8 @@ block content
               th(scope='col')
               th(scope='col') ชื่อปริญญานิพนธ์
               th(scope='col') ผู้จัดทำ
-              th(scope='col') คณะ
               th(scope='col') สาขา
+              th(scope='col') คณะ
           tbody
             -let i=0
             each books in book
@@ -43,6 +43,6 @@ block content
                 td
                   a(href=`/book/detail/${books._id}`) #{books.bookname}
                 td=books.firstname+' '+books.lastname
-                td=books.faculty
                 td=books.branch
+                td=books.faculty
 
