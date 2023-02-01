@@ -1,9 +1,12 @@
 extends layout/main
 block content
+
   .container.mt-3
     include components/alert
-    h1.text-light ระบบฐานข้อมูลปริญญานิพนธ์
-    h4.text-light ระบบสารสนเทศเพื่อการบริหารจัดการข้อมูลปริญญานิพนธ์ บัณฑิตมหาวิทยาลัยราชมงคลสุวรรณภูมิ เพื่อประกอบการตัดสินใจของผู้บริหารและผู้ปฏิบัติงานในเรื่องที่เกี่ยวข้อง
+    div.d-flex.justify-content-center(style="background-color: #f4c759")
+      img(src="rus.png" style="width:500px", alt="")
+    h1 ระบบฐานข้อมูลปริญญานิพนธ์
+    h4 ระบบสารสนเทศเพื่อการบริหารจัดการข้อมูลปริญญานิพนธ์ บัณฑิตมหาวิทยาลัยราชมงคลสุวรรณภูมิ เพื่อประกอบการตัดสินใจของผู้บริหารและผู้ปฏิบัติงานในเรื่องที่เกี่ยวข้อง
     a.btn.btn-light(href="/about") อ่านเพิ่มเติม
     .card.mt-3
       .card-body

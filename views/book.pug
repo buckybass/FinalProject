@@ -4,10 +4,18 @@ block content
     .card
       form(action="/bookcreate" method="post" enctype="multipart/form-data").m-3
         h1.text-center ลงทะเบียนปริญญานิพนธ์
-        h4 ชื่อ : #{user.firstname}
-        h4 นามสกุล : #{user.lastname}
-        h4 คณะ : #{user.faculty}
-        h4 สาขา : #{user.branch}
+        .d-flex
+          h4(style="width:90px;") ชื่อ
+          h4 : #{user.firstname}
+        .d-flex
+          h4(style="width:90px;") นามสกุล
+          h4 : #{user.lastname}
+        .d-flex
+          h4(style="width:90px;") คณะ
+          h4 : #{user.faculty}
+        .d-flex
+          h4(style="width:90px;") สาขา
+          h4 : #{user.branch}
         if user.admin
           h4 แอดมิน : #{user.admin}
         .form-floating
@@ -22,7 +30,7 @@ block content
             option(value='อาจารย์ไพรฑูรณ์') อาจารย์ไพรฑูรณ์
           label(for="floatingSelect") อาจารย์ที่ปรึกษา
         .mt-3
-          label(for="bookfile") เพิ่มไฟล์
+          label(for="bookfile") เพิ่มไฟล์(PDF)
           input.form-control#bookfile(type="file", name="bookfile"  accept="application/pdf" required)
         .mt-3.text-center
           button.btn.btn-primary(type="submit")  ลงทะเบียน

@@ -4,14 +4,24 @@ block content
     .card
       .card-body
         h1.text-center ข้อมูลผู้ใช้
-        .text-center.mt-3
-          img(src=user.avatarUrl, alt="")
-        h4 อีเมล : #{user.email}
-        h4 ชื่อ : #{user.firstname}
-        h4 นามสกุล : #{user.lastname}
-        h4 เบอร์มือถือ : 0#{user.phonenumber}
-        h4 คณะ : #{user.faculty}
-        h4 สาขา : #{user.branch}
+        .d-flex
+          h4(style="width:90px;") อีเมล
+          h4 : #{user.email}
+        .d-flex
+          h4(style="width:90px;") ชื่อ
+          h4 : #{user.firstname}
+        .d-flex
+          h4(style="width:90px;") นามสกุล
+          h4 : #{user.lastname}
+        .d-flex
+          h4(style="width:90px;") มือถือ
+          h4 : 0#{user.phonenumber}
+        .d-flex
+          h4(style="width:90px;") คณะ
+          h4 : #{user.faculty}
+        .d-flex
+          h4(style="width:90px;") สาขา
+          h4 : #{user.branch}
         ul
             li=user.password ? 'บัญชีนี้มีรหัสผ่านแล้ว' : 'บัญชีนี้ยังไม่มีรหัสผ่าน'
             li=user.oauth.google ? 'บัญชีผูกกับ Google แล้ว' : 'บัญชีนี้ยังไม่ผูกกับ Google '

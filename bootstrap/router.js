@@ -18,7 +18,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage
-  // dest: path.join(__dirname, '../public/book')
 })
 
 router.get('/', require('../controllers/index'))

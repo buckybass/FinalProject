@@ -1,7 +1,7 @@
-const { model, Schema } = require('mongoose')
+const { model, Schema, Types } = require('mongoose')
 
 const schema = new Schema({
-  userid: String,
+  userid: Types.ObjectId,
   firstname: String,
   lastname: String,
   faculty: String,
