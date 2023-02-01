@@ -24,3 +24,9 @@ block content
             a.btn.btn-info(href=`/book/${book.filename}`) ขอสิทธิ์อ้างอิงข้อมูล
             div(style="width:20px")
             a.btn.btn-info(href=`/book/${book.filename}`) ดาวน์โหลด
+        if user
+          if user.admin
+            if !book.approve
+              .d-flex.justify-content-center.mt-3
+                a.btn.btn-success.text-center(href=`/book/approve/${book._id}`) อนุมัติปริญญานิพนธ์
+

@@ -17,8 +17,9 @@
             a.dropdown-item(href='/user') ข้อมูลสมาชิก
           li
             a.dropdown-item(href='/status') เช็คสถานะการลงทะเบียน
-          li
-            a.dropdown-item(href='/managebook') จัดการข้อมูลผู้ดูแลระบบ
+          if user.admin
+            li
+              a.dropdown-item(href='/managebook') จัดการข้อมูลผู้ดูแลระบบ
           li
             a.dropdown-item.text-danger(href='/logout') ออกจากระบบ
       else
