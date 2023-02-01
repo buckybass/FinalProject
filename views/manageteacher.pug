@@ -12,15 +12,17 @@ block content
       .container
         .card.mt-3
           .card-body
+            include components/alert
             h1.text-center ข้อมูลอาจารย์ทั้งหมด
             h4 เพิ่มข้อมูลอาจารย์
-            form(action="/addteacher", method="post")
+            form(action="/teacher/create", method="post")
               .d-flex
-                input.form-control.form-control-sm(type="text" name="faculty_name" placeholder="ชื่อ" required)
+                input.form-control.form-control-sm(type="text" name="firstname" placeholder="ชื่อ" required)
                 div(style="width:5px")
-                input.form-control.form-control-sm(type="text" name="faculty_name" placeholder="นามสกุล" required)
+                input.form-control.form-control-sm(type="text" name="lastname" placeholder="นามสกุล" required)
                 div(style="width:5px")
                 button.btn.btn-success(type="submit") +
+            -let=i=0
             table.table.mt-3
               thead
                 tr
@@ -29,8 +31,12 @@ block content
                   th(scope='col') สกุล
                   th(scope='col')
               tbody
-                tr
-                  th(scope='row')
-                  td
-                  td
-                  td
+                each teachers in teacher
+                    tr
+                      th(scope='row')=i=i+1
+                      td=teachers.firstname
+                      td=teachers.lastname
+                      td.d-flex
+                        a.btn.btn-warning.btn-sm(href="") แก้ไข
+                        div(style="width:5px")
+                        a.btn.btn-danger.btn-sm(href="") ลบ

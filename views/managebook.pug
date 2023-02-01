@@ -19,10 +19,21 @@ block content
                   th(scope='col')
                   th(scope='col') ชื่อปริญญานิพนธ์
                   th(scope='col') ผู้จัดทำ
+                  th(scope='col') สาขา
+                  th(scope='col') คณะ
                   th(scope='col') สถานะ
               tbody
-                tr
-                  th(scope='row') 1
-                  td
-                  td #{user.firstname} #{user.lastname}
-                  td true or false
+                -let i=0
+                each books in book
+                  tr
+                    th(scope='row')=i=i+1
+                      td
+                        a(href=`/book/detail/${books._id}`) #{books.bookname}
+                      td=books.firstname+' '+books.lastname
+                      td=books.branch
+                      td=books.faculty
+                      td
+                        if books.approve
+                          .text-success อนุมัติแล้ว
+                        else
+                          .text-warning รออนุมัติ

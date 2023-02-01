@@ -32,6 +32,10 @@ block content
                     h2 เพิ่มรหัสผ่าน
                     input.form-control(type="password" name="password" placeholder="รหัสผ่าน")
                     button.btn.btn-primary.mt-2 บันทึกรหัสผ่าน
+        if user.admin
+          .text-success admin
+        else
+          .text-danger noadmin
         if !user.oauth.google
           a.btn.btn-light(href="/login/google") ผูกบัญชี Google #[img(src="https://www.pngplay.com/wp-content/uploads/12/Google-PNG-Photos.png" style="width:50px")]
         .text-center

@@ -1,5 +1,9 @@
+const teacher = require('../models/teachers')
+
 module.exports = (req, res) => {
-  res.render('manageteacher', {
-    user: req.user
+  teacher.find().exec((_err, doc) => {
+    res.render('manageteacher', {
+      teacher: doc
+    })
   })
 }

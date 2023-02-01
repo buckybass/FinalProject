@@ -46,4 +46,5 @@ router.get('/manageteacher', mustLogin, require('../controllers/manageteacher'))
 router.get('/manageuser', mustLogin, require('../controllers/manageuser'))
 router.get('/search', require('../controllers/search'))
 router.get('/book/detail/:id', require('../controllers/bookdetail'))
+router.post('/teacher/create', mustLogin, require('../controllers/teachercreate'))
 module.exports = router

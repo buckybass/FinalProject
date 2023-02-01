@@ -1,5 +1,9 @@
+const book = require('../models/book')
+
 module.exports = (req, res) => {
-  res.render('managebook', {
-    user: req.user
+  book.find().exec((_err, doc) => {
+    res.render('managebook', {
+      book: doc
+    })
   })
 }
