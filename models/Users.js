@@ -13,9 +13,14 @@ const schema = new Schema({
   faculty: String,
   branch: String,
   avatarUrl: String,
+  studentNumber: Number,
   oauth: {
     facebook: String,
     google: String
+  },
+  admin: {
+    type: Boolean,
+    default: false
   }
 }, { timestamps: true })
 
