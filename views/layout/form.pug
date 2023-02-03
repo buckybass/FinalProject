@@ -1,19 +1,11 @@
 extends _html
 
 block body
-  style.
-    body, html {
-    height: 100%;
-    margin: 0;
-    }
-    .bg {
-    background-image: url("https://rmutsb.ac.th/2011/upload2/files/logo_rmutsb_transparent(1).gif");
-    height:100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    }
-  .bg
-    .container.d-flex.min-vh-100.align-items-center.justify-content-center
+  include ../components/navbar
+  .container.mt-3
+    .d-flex.justify-content-center
+      img(src="/Login3.png" style=("width:400px"), alt="")
+    .d-flex.justify-content-center.mt-4
       .card(style='width:600px')
         .card-body
           block content
