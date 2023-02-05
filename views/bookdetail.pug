@@ -54,6 +54,7 @@ block content
                         form(action=`/book/dowload/${book._id}`, method="post")
                           input(type="hidden", name="user" value=user)
                           input(type="hidden", name="filename" value=book.filename)
+                          input(type="hidden", name="bookname" value=book.bookname)
                           .d-flex.justify-content-center
                             button.btn.btn-secondary(type='button', data-bs-dismiss='modal') ปิด
                             div(style="width:20px")
