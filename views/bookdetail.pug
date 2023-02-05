@@ -1,6 +1,7 @@
 extends layout/main
 block content
   .container.mt-3
+    include components/alert
     .card
       .card-body
         ul.list-group
@@ -21,12 +22,48 @@ block content
           .text-center.mt-3
             iframe(style='width:550px;height:350px', src='https://online.anyflip.com/wwcwx/usii/index.html', seamless='seamless', scrolling='no', frameborder='0', allowtransparency='true', allowfullscreen='true')
           .d-flex.justify-content-center.mt-3
-            a.btn.btn-info(href=`/book/${book.filename}`) ขอสิทธิ์อ้างอิงข้อมูล
-            div(style="width:20px")
-            a.btn.btn-info(href=`/book/${book.filename}`) ดาวน์โหลด
+            if user
+              button.btn.btn-info(type='button', data-bs-toggle='modal', data-bs-target='#exampleModal', data-bs-whatever='@getbootstrap') ขอสิทธิ์อ้างอิงข้อมูล
+              #exampleModal.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                  .modal-dialog
+                    .modal-content
+                      .modal-header
+                        h1#exampleModalLabel.modal-title.fs-5 ขอสิทธิ์อ้างอิงข้อมูล
+                        button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+                      .modal-body
+                        form(action=`/book/refer/${book._id}`, method="post")
+                          input(type="hidden", name="user" value=user)
+                          .mb-3
+                            label.col-form-label(for='recipient-name') หัวข้อข้อมูลที่นำไปใช้:
+                            input#recipient-name.form-control(type='text' name="title_ref")
+                          .mb-3
+                            label.col-form-label(for='message-text') เนื้อหาข้อมูล:
+                            textarea#message-text.form-control(name="content_ref")
+                          .modal-footer
+                            button.btn.btn-secondary(type='button', data-bs-dismiss='modal') ปิด
+                            button.btn.btn-primary(type='submit') ยืนยัน
+              div(style="width:20px")
+              button.btn.btn-info(type='button', data-bs-toggle='modal', data-bs-target='#exampleModal1', data-bs-whatever='@getbootstrap') ดาวน์โหลด
+              #exampleModal1.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                  .modal-dialog
+                    .modal-content
+                      .modal-header
+                        h1#exampleModalLabel.modal-title.fs-5 ยืนยันการดาวน์โหลด
+                        button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+                      .modal-body
+                        form(action=`/book/dowload/${book._id}`, method="post")
+                          input(type="hidden", name="user" value=user)
+                          input(type="hidden", name="filename" value=book.filename)
+                          .d-flex.justify-content-center
+                            button.btn.btn-secondary(type='button', data-bs-dismiss='modal') ปิด
+                            div(style="width:20px")
+                            button.btn.btn-primary(type='submit') ยืนยัน
+            else
+              h4.text-warning กรุณาเข้าสู่ระบบเพื่อข้อสิทธิ์อ้างอิงหรือดาวน์โหลด
         if user
           if user.admin
             if !book.approve
               .d-flex.justify-content-center.mt-3
                 a.btn.btn-success.text-center(href=`/book/approve/${book._id}`) อนุมัติปริญญานิพนธ์
+
 

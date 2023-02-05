@@ -48,4 +48,7 @@ router.get('/search', require('../controllers/search'))
 router.get('/book/detail/:id', require('../controllers/bookdetail'))
 router.post('/teacher/create', mustLogin, require('../controllers/teachercreate'))
 router.get('/book/approve/:id', mustLogin, require('../controllers/bookapprove'))
+router.post('/book/refer/:id', mustLogin, require('../controllers/bookrefer'))
+router.post('/book/dowload/:id', mustLogin, require('../controllers/bookdowload'))
+router.get('/managedowload', mustLogin, require('../controllers/managedowload'))
 module.exports = router

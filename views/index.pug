@@ -1,12 +1,11 @@
 extends layout/main
 block content
-  div(style="background-color: #3838c8;  width:100%; height:100%")
+  div.container-fluid(style="background-color: #3838c8;  width:100%; height:100%")
     .container
       include components/alert
     .container.d-flex.justify-content-center.align-items-center
-      img(src="index.png" style="width:1090px", alt="")
+      img(src="index.png" style="width:68.125rem", alt="")
   .container.mt-3
-
     .card.mt-3
       .card-body
         form
@@ -28,8 +27,8 @@ block content
                 option(value='บัญชี') บัญชี
                 option(value='...') ...
           input.btn.btn-success.mt-2(type="button", value="ค้นหา")
-    .row.mt-3
-      .col-md-6
+    .row
+      .col-md-6.mt-3
         ul.list-group
           li.list-group-item.list-group-item-info
             h4 อาจารย์ที่ปรึกษา
@@ -45,7 +44,7 @@ block content
             a(href="/") คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์
           li.list-group-item
             a(href="/") คณะศิลปศาสตร์
-      .col-md-6
+      .col-md-6.mt-3
         ul.list-group
           li.list-group-item.list-group-item-info
             h4 นักศึกษา
@@ -61,24 +60,24 @@ block content
             a(href="/") คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์
           li.list-group-item
             a(href="/") คณะศิลปศาสตร์
-    .mt-3
-      .row.justify-content-evenly
-        .col-md-3.text-center.card
-          .card-body
-            .d(style='height:250px')
-              img.img-thumbnail(src="/student.png" style="width:170px", alt="" )
-            h1.card-title นักศึกษา
-            p.card-text จัดเก็บประวัตินักศึกษา บัณฑิตมหาวิทยาลัยราชมงคลสุวรรณภูมิ ที่จัดทำวิทยานิพนธ์หรือการค้นคว้าอิสระ พร้อมรายการความก้าวหน้าในการดำเนินการจัดสอบ
-        .col-md-4.text-center.card
-          .card-body
-            .d-flex.align-items-center(style='height:250px')
-              img.img-thumbnail(src="/teacher.png" style="width:400px", alt="")
-            h1.card-title อาจารย์
-            p จัดเก็บประวัติอาจารย์ที่ปรึกษา ประวัติการเป็นอาจารย์ที่ปรึกษา ประวัติการศึกษา และประวัติความเชี่ยวชาญเพื่อเป็นฐานข้อมูลในการตัดสินใจในการเลือกอาจารย์ที่ปรึกษา
-        .col-md-3.text-center.card
-          .card-body
-            .d-flex.align-items-center(style='height:250px')
-              img.img-thumbnail(src="/thesis.jpg" style="width:350px", alt="")
-            h1.card-title ปริญญานิพนธ์
-            p จัดเก็บหัวข้อวิทยานิพนธ์ ผู้จัดทำ อาจารย์ที่ปรึกษา คณะกรรมการสอบ วันที่สอบโครงร่าง และวันที่สอบจบ
+
+    .row.justify-content-evenly
+      .col-md-3.text-center.card.mt-3
+        .card-body
+          .d(style='height:250px')
+            img.img-thumbnail(src="/student.png" style="width:170px", alt="" )
+          h1.card-title นักศึกษา
+          p.card-text จัดเก็บประวัตินักศึกษา บัณฑิตมหาวิทยาลัยราชมงคลสุวรรณภูมิ ที่จัดทำวิทยานิพนธ์หรือการค้นคว้าอิสระ พร้อมรายการความก้าวหน้าในการดำเนินการจัดสอบ
+      .col-md-4.text-center.card.mt-3
+        .card-body
+          .d-flex.align-items-center(style='height:250px')
+            img.img-thumbnail(src="/teacher.png" style="width:400px", alt="")
+          h1.card-title อาจารย์
+          p จัดเก็บประวัติอาจารย์ที่ปรึกษา ประวัติการเป็นอาจารย์ที่ปรึกษา ประวัติการศึกษา และประวัติความเชี่ยวชาญเพื่อเป็นฐานข้อมูลในการตัดสินใจในการเลือกอาจารย์ที่ปรึกษา
+      .col-md-3.text-center.card.mt-3
+        .card-body
+          .d-flex.align-items-center(style='height:250px')
+            img.img-thumbnail(src="/thesis.jpg" style="width:350px", alt="")
+          h1.card-title ปริญญานิพนธ์
+          p จัดเก็บหัวข้อวิทยานิพนธ์ ผู้จัดทำ อาจารย์ที่ปรึกษา คณะกรรมการสอบ วันที่สอบโครงร่าง และวันที่สอบจบ
 

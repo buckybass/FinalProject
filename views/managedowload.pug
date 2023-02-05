@@ -1,0 +1,37 @@
+extends layout/main
+block content
+  .row
+    .col-md-3
+      include ./components/sidebar
+      .sidebar
+        a(href='/managebook') ข้อมูลปริญญานิพนธ์
+        a(href='/managefac') ข้อมูลคณะ
+        a(href='/manageteacher') ข้อมูลอาจารย์
+        a(href='/manageuser') ข้อมูลสมาชิก
+        a.active(href='/managedowload') ข้อมูลการดาวน์โหลด
+    .col-md-7
+      .container
+        .card.mt-3
+          .card-body
+            h1.text-center ข้อมูลการดาวน์โหลดทั้งหมด
+            -let i = 0
+              table.table.mt-3
+                thead
+                  tr
+                    th(scope='col') ลำดับ
+                    th(scope='col') ชื่อเล่ม
+                    th(scope='col') ชื่อผู้โหลด
+                    th(scope='col') วันที่โหลด
+                    th(scope='col') เวลา
+                tbody
+                  each bookdowload in bookdowloads
+                    -var d = new Date(bookdowload.createdAt)
+                    -var momth = ['มกราคม','กุมภาพันธ','มีนาคม','เมษายน','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
+                    -var time = d.getHours()+':'+d.getMinutes()
+                    -var day = d.getDate()+' '+momth[(d.getMonth()-1)]+' '+d.getFullYear()
+                    tr
+                      th(scope='row')=i=i+1
+                      td=bookdowload.bookname
+                      td=bookdowload.firstname+' '+bookdowload.lastname
+                      td=day
+                      td=time

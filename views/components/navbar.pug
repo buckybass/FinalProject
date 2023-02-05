@@ -1,28 +1,39 @@
-.d-flex.justify-content-between.align-items-center.text-light.fixed-top(style='background-color:#2759be;')
-  .col-md-2.m-2
-    a(href="/", style='text-decoration:none; color:white;')
-      img(src="/ruslogo.png" style="width:100px", alt="")
-  .col-md-6.d-flex.justify-content-center
-    a.m-3.nav-link(href="/") หน้าแรก
-    a.m-3.nav-link(href="/search") ค้นหา
-    a.m-3.nav-link(href="/book") ลงทะเบียนปริญญานิพนธ์
-    a.m-3.nav-link(href="/about") เกี่ยวกับระบบ
-  .col-md-2.text-end.m-2
-    .dropdown
+div(style='background-color:#2759be;')
+  .container
+    .d-flex.justify-content-between.align-items-center
+      a(href="/", style='text-decoration:none; color:white;')
+            img(src="/ruslogo.png" style="width:148px", alt="")
+      .d-flex.justify-content-center.align-items-center
+          a.nav-link.text-center.m-3.text-light(href="/")
+            h5 หน้าแรก
+          a.nav-link.text-center.m-3.text-light(href="/search")
+            h5 ค้นหา
+          a.nav-link.text-center.m-3.text-light(href="/book")
+            h5 ลงทะเบียนเล่ม
+          a.nav-link.text-center.m-3.text-light(href="/about")
+            h5 เกี่ยวกับระบบ
+          if user
+            if user.admin
+              a.nav-link.text-center.m-3.text-light(href="/managebook")
+                h5 จัดการข้อมูล
+            if !user.admin
+              a.nav-link.text-center.m-3.text-light(href='/status')
+                h5 เช็คสถานะเล่ม
       if user
-        button.btn.btn-secondary.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false')
-          user #{user.firstname}
+        div
+          a.btn.btn-primary.m-2(href='/user') #{user.firstname}
+          a.btn.btn-danger.m-2(href='/logout') ออกจากระบบ
         ul.dropdown-menu
-          li
-            a.dropdown-item(href='/user') ข้อมูลสมาชิก
           li
             a.dropdown-item(href='/status') เช็คสถานะการลงทะเบียน
           if user.admin
             li
-              a.dropdown-item(href='/managebook') จัดการข้อมูลผู้ดูแลระบบ
+              a.dropdown-item(href='') จัดการข้อมูลผู้ดูแลระบบ
           li
-            a.dropdown-item.text-danger(href='/logout') ออกจากระบบ
       else
-          a.btn.btn-secondary(href="/login") เข้าสู่ระบบ
+        div
+          a.btn.btn-primary.m-2(href="/login") เข้าสู่ระบบ
+          a.btn.btn-primary.m-2(href="/registerout") สมัครสมาชิก
+
 
 

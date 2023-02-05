@@ -22,21 +22,13 @@ block content
         .d-flex
           h4(style="width:90px;") สาขา
           h4 : #{user.branch}
-        ul
-            li=user.password ? 'บัญชีนี้มีรหัสผ่านแล้ว' : 'บัญชีนี้ยังไม่มีรหัสผ่าน'
-            li=user.oauth.google ? 'บัญชีผูกกับ Google แล้ว' : 'บัญชีนี้ยังไม่ผูกกับ Google '
-        if !user.password
-            .card.mt-3
-                .card-body.bg-light
-                form(action="/update-password", method="post")
-                    h2 เพิ่มรหัสผ่าน
-                    input.form-control(type="password" name="password" placeholder="รหัสผ่าน")
-                    button.btn.btn-primary.mt-2 บันทึกรหัสผ่าน
-        if user.admin
-          .text-success admin
-        else
-          .text-danger noadmin
-        if !user.oauth.google
-          a.btn.btn-light(href="/login/google") ผูกบัญชี Google #[img(src="https://www.pngplay.com/wp-content/uploads/12/Google-PNG-Photos.png" style="width:50px")]
-        .text-center
-          button.btn.btn-warning แก้ไขข้อมูล
+        //- ul
+        //-     li=user.password ? 'บัญชีนี้มีรหัสผ่านแล้ว' : 'บัญชีนี้ยังไม่มีรหัสผ่าน'
+        //-     li=user.oauth.google ? 'บัญชีผูกกับ Google แล้ว' : 'บัญชีนี้ยังไม่ผูกกับ Google '
+        //- if !user.password
+        //-     .card.mt-3
+        //-         .card-body.bg-light
+        //-         form(action="/update-password", method="post")
+        //-             h2 เพิ่มรหัสผ่าน
+        //-             input.form-control(type="password" name="password" placeholder="รหัสผ่าน")
+        //-             button.btn.btn-primary.mt-2 บันทึกรหัสผ่าน
