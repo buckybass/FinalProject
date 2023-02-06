@@ -33,6 +33,7 @@ block content
                       .modal-body
                         form(action=`/book/refer/${book._id}`, method="post")
                           input(type="hidden", name="user" value=user)
+                          input(type="hidden", name="bookname" value=book.bookname)
                           .mb-3
                             label.col-form-label(for='recipient-name') หัวข้อข้อมูลที่นำไปใช้:
                             input#recipient-name.form-control(type='text' name="title_ref")
