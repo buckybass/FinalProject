@@ -10,6 +10,7 @@ const schema = new Schema({
   firstname: String,
   lastname: String,
   phonenumber: Number,
+  university: String,
   faculty: String,
   branch: String,
   avatarUrl: String,

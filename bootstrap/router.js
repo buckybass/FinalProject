@@ -52,4 +52,5 @@ router.post('/book/refer/:id', mustLogin, require('../controllers/bookrefer'))
 router.post('/book/dowload/:id', mustLogin, require('../controllers/bookdowload'))
 router.get('/managedowload', mustLogin, require('../controllers/managedowload'))
 router.get('/managerefer', mustLogin, require('../controllers/managerefer'))
+router.get('/user/delete/:id', mustLogin, require('../controllers/deleteUser'))
 module.exports = router

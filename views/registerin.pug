@@ -11,33 +11,34 @@ block content
     form.mt-3(action="/register", method="post")
       .row.g-2
         .col-md-6.form-floating
-          input#floatingEmail.form-control(type='email' placeholder='name@example.com' name="email")
+          input#floatingEmail.form-control(type='email' placeholder='name@example.com' name="email" required)
           label(for='floatingEmail') Email
         .col-md-6.form-floating
-          input#floatingPassword.form-control(type="password", name="password" placeholder="รหัสผ่าน")
+          input#floatingPassword.form-control(type="password", name="password" placeholder="รหัสผ่าน" required)
           label(for='floatingPassword') รหัสผ่าน
       .row.mt-2.g-2
         .col-md-6
         .col-md-6.form-floating
-          input#floatingConfirmPassword.form-control(type="password", name="confirmpassword" placeholder="รหัสผ่าน")
+          input#floatingConfirmPassword.form-control(type="password", name="confirmpassword" placeholder="รหัสผ่าน" required)
           label(for='floatingConfirmPassword') ยืนยันรหัสผ่าน
       .row.mt-2.g-2
         .col-md-6.form-floating
-          input#floatingConfiFirstname.form-control(type="text", name="firstname" placeholder="ชื่อ")
+          input#floatingConfiFirstname.form-control(type="text", name="firstname" placeholder="ชื่อ" required)
           label(for='floatingFirstname') ชื่อ
         .col-md-6.form-floating
-          input#floatingLastname.form-control(type="text", name="lastname" placeholder="นามสกุล")
+          input#floatingLastname.form-control(type="text", name="lastname" placeholder="นามสกุล" required)
           label(for='floatingLastname') นามสกุล
       .row.mt-2.g-2
         .col-md-12.form-floating
-          input#floatingNumber.form-control(type="number", name="phonenumber" placeholder="เบอร์มือถือ")
+          input#floatingNumber.form-control(type="number", name="phonenumber" placeholder="เบอร์มือถือ" required)
           label(for='floatingNumber') เบอร์มือถือ
       .row.mt-2.g-2
         .col-md-12.form-floating
-          input#floatingNumber.form-control(type="number", name="studentnumber" placeholder="รหัสนักศึกษา")
+          input#floatingNumber.form-control(type="number", name="studentnumber" placeholder="รหัสนักศึกษา" required)
           label(for='floatingNumber') รหัสนักศึกษา
       input(type="hidden", name="faculty" value="บริการธุรกิจและเทคโนโลยีสารสนเทศ")
       input(type="hidden", name="branch" value="ระบบสารสนเทศ")
+      input(type="hidden", name="university" value="มหาวิทยาลัยเทคโนโลยีราชมงคลสุวรรณภูมิ")
       .d-flex.justify-content-center
         button.btn.btn-primary.mt-3 สมัครสมาชิก
       //- label.form-label(for="email") อีเมล

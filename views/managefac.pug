@@ -31,8 +31,7 @@ block content
                   button.btn.btn-success.btn-sm.me-3 บันทึก
               button.btn.btn-warning.btn-sm.me-1(type="button" onclick="editList(event)") แก้ไข
               div(style="width:5px")
-              form(action=`/deletefaculty/${facultys._id}`, method="get")
-                button.btn.btn-sm.btn-danger(type="submit" onclick='confirm("ต้องการลบ")') ลบ
+              button.btn.btn-sm.btn-danger(onclick=`deleteFaculty('${facultys._id}')`) ลบ
   script.
       function editList (event) {
         const parent = event.target.parentNode
@@ -42,4 +41,11 @@ block content
         span.classList.toggle('d-none')
         event.target.innerText = event.target.innerText === 'แก้ไข' ? 'ยกเลิก' : 'แก้ไข'
       }
+      function deleteFaculty(id) {
+        if (confirm('ต้องการลบใช่หรือไม่') == true) {
+          location.replace(`/deletefaculty/${id}`)
+        } else {
+          console.log('cancel')
+        }
+        }
 

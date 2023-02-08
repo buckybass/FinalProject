@@ -27,16 +27,16 @@ block content
                   th(scope='col') สถานะ
               tbody
                 -let i=0
-                each books in book
+                each book in books
                   tr
                     th(scope='row')=i=i+1
                       td
-                        a(href=`/book/detail/${books._id}`) #{books.bookname}
-                      td=books.firstname+' '+books.lastname
-                      td=books.branch
-                      td=books.faculty
+                        a(href=`/book/detail/${books._id}`) #{book.bookname}
+                      td=book.firstname+' '+book.lastname
+                      td=book.branch
+                      td=book.faculty
                       td
-                        if books.approve
+                        if book.approve
                           .text-success อนุมัติแล้ว
                         else
                           .text-warning รออนุมัติ

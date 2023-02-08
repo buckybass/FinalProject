@@ -11,8 +11,9 @@ block content
         a(href='/managedowload') ข้อมูลการดาวน์โหลด
         a(href='/managerefer') ข้อมูลการขอสิทธิ์
     .col-md-7
-      .container
-        .card.mt-3
+      .container.mt-3
+        include ./components/alert
+        .card
           .card-body
             h1.text-center ข้อมูลสมาชิกทั้งหมด
             -let i = 0
@@ -20,20 +21,27 @@ block content
                 thead
                   tr
                     th(scope='col') ลำดับ
-                    th(scope='col') ชื่อ
-                    th(scope='col') สกุล
+                    th(scope='col') ชื่อ - สกุล
+                    th(scope='col') อีเมล
                     th(scope='col') คณะ
                     th(scope='col') สาขา
+                    th(scope='col')
                     th(scope='col')
                 tbody
                   each Users in User
                     tr
                       th(scope='row')=i=i+1
-                      td=Users.firstname
-                      td=Users.lastname
+                      td=Users.firstname + ' ' +Users.lastname
+                      td=Users.email
                       td=Users.faculty
                       td=Users.branch
                       td.d-flex
-                        a.btn.btn-warning.btn-sm(href="") แก้ไข
-                        div(style="width:5px")
-                        a.btn.btn-danger.btn-sm(href="") ลบ
+                        button.btn.btn-danger.btn-sm(onclick=`deleteUser('${Users._id}')`) ลบ
+  script.
+    function deleteUser(id) {
+    if (confirm('ต้องการลบใช่หรือไม่') == true) {
+      location.replace(`/user/delete/${id}`)
+    } else {
+      console.log('cancel')
+    }
+    }
