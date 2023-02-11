@@ -12,7 +12,7 @@ const bodyParser = require('body-parser')
 
 dotenv.config()
 
-mongoose.connect('mongodb+srv://Admin:Password@monkey.yasgbdt.mongodb.net/rusisthesis?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://Admin:Password@monkey.yasgbdt.mongodb.net/?retryWrites=true&w=majority')
 // const RedisStore = connectRedis(session)
 // const redisClient = redis.createClient({
 //   legacyMode: true,
