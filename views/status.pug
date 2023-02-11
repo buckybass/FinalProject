@@ -4,24 +4,99 @@ block content
     .card
       .card-body
           h1.text-center สถานะการลงทะเบียน
+          if books[0]
+            table.table
+              thead
+                tr
+                  th.text-center(scope='col') ลำดับ
+                  th.text-center(scope='col') ชื่อปริญญานิพนธ์
+                  th.text-center(scope='col') ผู้จัดทำ
+                  th.text-center(scope='col') อาจารย์ที่ปรึกษา
+                  th.text-center(scope='col') สถานะ
+              tbody
+                  -var i = 0
+                  each book in books
+                    tr
+                      th.text-center(scope='row')=i+=1
+                      td.text-center
+                        a(href=`/book/detail/${book._id}`)=book.bookname
+                      td.text-center=user.firstname + " " + user.lastname
+                      td.text-center=book.teacher
+                      if book.approve
+                        td.text-center.text-success อนุมัติแล้ว
+                      else
+                        td.text-center.text-warning รออนุมัติ
+          else
+            h3.text-danger.text-center.mt-5 ไม่พบข้อมูลปริญญานิพนธ์ของคุณ
+    .card.mt-3
+      .card-body
+        h1.text-center ข้อมูลผู้ขอสิทธิ์อ้างอิงและดาวน์โหลดปริญญานิพนธ์ของฉัน
+        -var stauts = false
+        each bookapprove in books
+          if bookapprove.approve
+            -status = true
+        if status
           table.table
             thead
               tr
-                th(scope='col') ลำดับ
-                th(scope='col') ชื่อปริญญานิพนธ์
-                th(scope='col') ผู้จัดทำ
-                th(scope='col') สถานะ
+                th.text-center(scope='col') ลำดับ
+                th.text-center(scope='col') ชื่อปริญญานิพนธ์
+                th.text-center(scope='col') ผู้จัดทำ
+                th.text-center(scope='col') อาจารย์ที่ปรึกษา
+                th.text-center(scope='col') จำนวนผู้ขอสิทธิ์
+                th.text-center(scope='col') จำนวนผู้ดาวน์โหลด
             tbody
-              -var i = 0
-              each book in books
-                tr
-                  th(scope='row')=i+=1
-                  td=book.bookname
-                  td=user.firstname + " " + user.lastname
+                -var i = 0
+                each book in books
                   if book.approve
-                    td.text-success อนุมัติแล้ว
-                  else
-                    td.text-warning รออนุมัติ
+                    tr
+                      th.text-center(scope='row')=i+=1
+                      td.text-center
+                        a(href=`/book/detail/${book._id}`)=book.bookname
+                      td.text-center=user.firstname + " " + user.lastname
+                      td.text-center=book.teacher
+                      td.text-center
+                        if countrefer
+                          a(href=`/status/refer/${book._id}`)=countrefer
+                        else
+                          div 0
+                      td.text-center
+                        if countdowload
+                          a(href=`/status/dowload/${book._id}`)=countdowload
+                        else
+                          div 0
+        else
+          h2.mt-5.text-warning.text-center เล่มยังไม่รับการอนุมัติยังไม่สามารถดูข้อมูลได้
+
+    //- if books[0]
+    //-   .card.mt-3
+    //-     .card-body
+    //-       h1.text-center ข้อมูลผู้ขอสิทธิ์อ้างอิงและดาวน์โหลดปริญญานิพนธ์ของฉัน
+    //-       if countrefer || countdowload
+    //-         table.table
+    //-           thead
+    //-             tr
+    //-               th.text-center(scope='col') ลำดับ
+    //-               th.text-center(scope='col') ชื่อปริญญานิพนธ์
+    //-               th.text-center(scope='col') ผู้จัดทำ
+    //-               th.text-center(scope='col') จำนวนผู้ขอสิทธิ์
+    //-               th.text-center(scope='col') จำนวนผู้ดาวน์โหลด
+    //-           tbody
+    //-               -var i = 0
+    //-               each book in books
+    //-                 if book.approve
+    //-                   tr
+    //-                     th.text-center(scope='row')=i+=1
+    //-                     td.text-center
+    //-                       a(href=`/book/detail/${book._id}`)=book.bookname
+    //-                     td.text-center=user.firstname + " " + user.lastname
+    //-                     td.text-center
+    //-                       a(href=`/status/refer/${book._id}`)=countrefer
+    //-                     td.text-center
+    //-                       a(href=`/status/dowload/${book._id}`)=countdowload
+    //-       else
+    //-         h2.mt-5.text-warning.text-center เล่มยังไม่รับการอนุมัติยังไม่สามารถดูข้อมูลได้
+
 
 
 

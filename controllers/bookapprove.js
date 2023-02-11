@@ -4,5 +4,5 @@ module.exports = async (req, res) => {
     _id: req.params.id
   }, { $set: { approve: true } })
   req.flash('success', 'อนุมัติสำเร็จ')
-  res.redirect('/managebook')
+  res.redirect('/manageapprove')
 }

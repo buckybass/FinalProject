@@ -22,7 +22,12 @@ const schema = new Schema({
   admin: {
     type: Boolean,
     default: false
-  }
+  },
+  teacher: {
+    type: Boolean,
+    default: false
+  },
+  oldpassword: String
 }, { timestamps: true })
 
 module.exports = model('Users', schema)

@@ -8,34 +8,42 @@ block content
         a(href='/managefac') ข้อมูลคณะ
         a(href='/manageteacher') ข้อมูลอาจารย์
         a(href='/manageuser') ข้อมูลสมาชิก
-        a(href='/managedowload') ข้อมูลการดาวน์โหลด
-        a.active(href='/managerefer') ข้อมูลการขอสิทธิ์
+        a.active(href='/managerefer') ข้อมูลปริญญานิพนธ์
     .col-md-7
       .container
         .card.mt-3
           .card-body
-            h1.text-center ข้อมูลการขอสิทธิ์อ้างอิงทั้งหมด
+            h1.text-center ข้อมูลการปริญญานิพนธ์ทั้งหมด
             -let i = 0
               table.table.mt-3
                 thead
                   tr
-                    th(scope='col') ลำดับ
-                    th(scope='col') ชื่อเล่ม
-                    th(scope='col') ชื่อผู้ขอสิทธิ์
-                    th(scope='col') วันขอสิทธิ์อ้างอิง
-                    th(scope='col') เวลา
-                    th(scope='col')
+                    th.text-center(scope='col') ลำดับ
+                    th.text-center(scope='col') ชื่อเล่ม
+                    th.text-center(scope='col') ชื่อจัดทำ
+                    th.text-center(scope='col') จำนวนผู้ขอสิทธิ์
+                    th.text-center(scope='col') จำนวนผู้ดาวน์โหลด
                 tbody
                   each bookrefer in bookrefers
-                    -var d = new Date(bookrefer.createdAt)
-                    -var momth = ['มกราคม','กุมภาพันธ','มีนาคม','เมษายน','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
-                    -var time = d.getHours()+':'+d.getMinutes()
-                    -var day = d.getDate()+' '+momth[(d.getMonth()-1)]+' '+d.getFullYear()
-                    tr
-                      th(scope='row')=i=i+1
-                      td=bookrefer.bookname
-                      td=bookrefer.firstname+' '+bookrefer.lastname
-                      td=day
-                      td=time
-                      td
-                        a.btn.btn-primary.btn-sm(href="/") ดูรายละเอียด
+                    if bookrefer.approve
+                      -var d = new Date(bookrefer.createdAt)
+                      -var momth = ['มกราคม','กุมภาพันธ','มีนาคม','เมษายน','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
+                      -var time = d.getHours()+':'+d.getMinutes()
+                      -var day = d.getDate()+' '+momth[(d.getMonth()-1)]+' '+d.getFullYear()
+                      tr
+                        th.text-center(scope='row')=i+1
+                        td.text-center
+                          a(href=`/book/detail/${bookrefer._id}`)=bookrefer.bookname
+                        td.text-center=bookrefer.firstname+' '+bookrefer.lastname
+                        td.text-center
+                          if bookrefer.bookRefer.length
+                            a(href=`/status/refer/${bookrefer._id}`)=bookrefer.bookRefer.length
+                          else
+                            div 0
+                        td.text-center
+                          if bookdowloads[i].bookDowload.length
+                            a(href=`/status/dowload/${bookrefer._id}`)=bookdowloads[i].bookDowload.length
+                          else
+                            div 0
+
+                    -i+=1

@@ -63,7 +63,7 @@ block content
             else
               h4.text-warning กรุณาเข้าสู่ระบบเพื่อข้อสิทธิ์อ้างอิงหรือดาวน์โหลด
         if user
-          if user.admin
+          if user.admin || user.teacher
             if !book.approve
               .d-flex.justify-content-center.mt-3
                 a.btn.btn-success.text-center(href=`/book/approve/${book._id}`) อนุมัติปริญญานิพนธ์

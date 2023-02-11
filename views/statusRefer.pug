@@ -1,0 +1,72 @@
+extends layout/main
+block content
+  .container
+    .card.mt-3
+      .card-body
+        if bookrefers
+          h1.text-center ข้อมูลการขอสิทธิ์อ้างอิง : #{bookrefers[0].bookname}
+          -let i = 0
+            table.table.mt-3
+              thead
+                tr
+                  th.text-center(scope='col') ลำดับ
+                  th.text-center(scope='col') ชื่อผู้ขอสิทธิ์
+                  th.text-center(scope='col') หัวข้อ
+                  th.text-center(scope='col') วันขอสิทธิ์อ้างอิง
+                  th.text-center(scope='col') เวลา
+                  th.text-center(scope='col')
+              tbody
+                each bookrefer in bookrefers
+                  -var d = new Date(bookrefer.createdAt)
+                  -var momth = ['มกราคม','กุมภาพันธ','มีนาคม','เมษายน','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
+                  -var time = d.getHours()+':'+d.getMinutes()
+                  -var day = d.getDate()+' '+momth[(d.getMonth()-1)]+' '+d.getFullYear()
+                  tr
+                    th.text-center(scope='row')=i=i+1
+                    td.text-center=bookrefer.firstname+' '+bookrefer.lastname
+                    td.text-center=bookrefer.title
+                    td.text-center=day
+                    td.text-center=time
+                    td.text-center
+                      button.btn.btn-info.btn-sm(type='button', data-bs-toggle='modal', data-bs-target=`#${i}`, data-bs-whatever='@getbootstrap') รายละเอียด
+                      .modal.fade(id=i,tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                          .modal-dialog
+                            .modal-content
+                              .modal-header
+                                h1#exampleModalLabel.modal-title.fs-5 รายละเอียดการขอสิทธิ์อ้างอิง
+                                button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+                              .modal-body
+                                .mb-3
+                                  .d-flex
+                                    h4.text-primary หัวข้อ :
+                                    h4=bookrefer.title
+                                .mb-3
+                                  .d-flex.align-items-center
+                                    h4.col-form-label.text-primary(for='message-text') เนื้อหาข้อมูล :
+                                    .d=bookrefer.content
+                                .modal-footer
+                                  button.btn.btn-secondary(type='button', data-bs-dismiss='modal') ปิด
+                                  button.btn.btn-primary(type='submit') ยืนยัน
+        else
+          if bookdowloads
+            h1.text-center ข้อมูลการดาวโหลดน์ : #{bookdowloads[0].bookname}
+            table.table.mt-3
+                thead
+                  tr
+                    th.text-center(scope='col') ลำดับ
+                    th.text-center(scope='col') ชื่อผู้โหลด
+                    th.text-center(scope='col') วันที่โหลด
+                    th.text-center(scope='col') เวลา
+                tbody
+                  -let i = 0
+                  each bookdowload in bookdowloads
+                    -var d = new Date(bookdowload.createdAt)
+                    -var momth = ['มกราคม','กุมภาพันธ','มีนาคม','เมษายน','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
+                    -var time = d.getHours()+':'+d.getMinutes()
+                    -var day = d.getDate()+' '+momth[(d.getMonth()-1)]+' '+d.getFullYear()
+                    tr
+                      th.text-center(scope='row')=i=i+1
+                      td.text-center=bookdowload.firstname+' '+bookdowload.lastname
+                      td.text-center=day
+                      td.text-center=time
+

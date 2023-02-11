@@ -14,11 +14,14 @@ div(style='background-color:#2759be;')
             h5 เกี่ยวกับระบบ
           if user
             if user.admin
-              a.nav-link.text-center.m-3.text-light(href="/managebook")
+              a.nav-link.text-center.m-3.text-light(href="/managefac")
                 h5 จัดการข้อมูล
             if !user.admin
               a.nav-link.text-center.m-3.text-light(href='/status')
-                h5 เช็คสถานะเล่ม
+                h5 เช็คสถานะ
+            if user.teacher
+              a.nav-link.text-center.m-3.text-light(href='/manageapprove')
+                h5 การอนุมัติ
       if user
         div
           a.btn.btn-primary.m-2(href='/user') #{user.firstname}
