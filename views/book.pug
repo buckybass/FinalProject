@@ -26,7 +26,7 @@ block content
           select#floatingSelect.form-select(name='teacher')
             option(selected='') กรุณาเลือก
             each teacher in teachers
-              option(value=teacher.firstname)=teacher.firstname
+              option(value=teacher.firstname)=teacher.firstname + ' ' + teacher.lastname
           label(for="floatingSelect") อาจารย์ที่ปรึกษา
         .mt-3
           label(for="bookfile") เพิ่มไฟล์(PDF)
