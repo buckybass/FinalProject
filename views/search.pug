@@ -9,20 +9,15 @@ block content
           input.form-control(type="text", name="",placeholder="ค้นหาเลย")
           .row.mt-3
             .col-md-6
-              select#autoSizingSelect.form-select(name='faculty')
-                option(selected='') เลือกคณะ
-                option(value='คณะครุศาสตร์อุตสาหกรรม') คณะครุศาสตร์อุตสาหกรรม
-                option(value='คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร') คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร
-                option(value='คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ') คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ
-                option(value='คณะวิทยาศาสตร์และเทคโนโลยี') คณะวิทยาศาสตร์และเทคโนโลยี
-                option(value='คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์') คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์
-                option(value='คณะศิลปศาสตร์') คณะศิลปศาสตร์
+              select#floatingSelect.form-select(name='category')
+                option(selected='') กรุณาเลือกหมวดหมู่ปริญญานิพนธ์
+                each category in categorys
+                  option(value=category.name)=category.name
             .col-md-6
-             select#autoSizingSelect.form-select(name='branch')
-                option(selected='') เลือกสาขา
-                option(value='ระบบสารสนเทศ') ระบบสารสนเทศ
-                option(value='บัญชี') บัญชี
-                option(value='...') ...
+              select.form-select(name='teacher')
+                option(selected='') กรุณาเลือกอาจารย์ที่ปรึกษา
+                each teacher in teachers
+                  option(value=teacher.firstname)=teacher.firstname + ' ' + teacher.lastname
           input.btn.btn-success.mt-2(type="button", value="ค้นหา")
     .card.mt-3
       .card-body

@@ -7,6 +7,7 @@ const schema = new Schema({
   faculty: String,
   branch: String,
   teacher: String,
+  category: String,
   bookname: String,
   filename: String,
   filepath: String,

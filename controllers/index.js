@@ -1,5 +1,13 @@
+const teacher = require('../models/Users')
+const category = require('../models/categorys')
 module.exports = (req, res) => {
-  res.render('index', {
-    user: req.user
+  teacher.find({ teacher: true }).exec((_err, Teachers) => {
+    category.find().exec((_err, Categotys) => {
+      res.render('index', {
+        user: req.user,
+        teachers: Teachers,
+        categorys: Categotys
+      })
+    })
   })
 }

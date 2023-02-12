@@ -32,34 +32,16 @@ block content
         ul.list-group
           li.list-group-item.list-group-item-info
             h4 อาจารย์ที่ปรึกษา
-          li.list-group-item
-            a(href="/") คณะครุศาสตร์อุตสาหกรรม
-          li.list-group-item
-            a(href="/") คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร
-          li.list-group-item
-            a(href="/") คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ
-          li.list-group-item
-            a(href="/") คณะวิทยาศาสตร์และเทคโนโลยี
-          li.list-group-item
-            a(href="/") คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์
-          li.list-group-item
-            a(href="/") คณะศิลปศาสตร์
+          each teacher in teachers
+            li.list-group-item
+              a(href="/")=teacher.firstname+' '+teacher.lastname
       .col-md-6.mt-3
         ul.list-group
           li.list-group-item.list-group-item-info
-            h4 นักศึกษา
-          li.list-group-item
-            a(href="/") คณะครุศาสตร์อุตสาหกรรม
-          li.list-group-item
-            a(href="/") คณะเทคโนโลยีการเกษตรและอุตสาหกรรมเกษตร
-          li.list-group-item
-            a(href="/") คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ
-          li.list-group-item
-            a(href="/") คณะวิทยาศาสตร์และเทคโนโลยี
-          li.list-group-item
-            a(href="/") คณะวิศวกรรมศาสตร์และสถาปัตยกรรมศาสตร์
-          li.list-group-item
-            a(href="/") คณะศิลปศาสตร์
+            h4 หมวดหมู่ปริญญานิพนธ์
+          each category in categorys
+            li.list-group-item
+              a(href="/")=category.name
 
     .row.justify-content-evenly
       .col-md-3.text-center.card.mt-3

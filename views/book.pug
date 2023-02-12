@@ -16,8 +16,6 @@ block content
         .d-flex
           h4(style="width:90px;") สาขา
           h4 : #{user.branch}
-        if user.admin
-          h4 แอดมิน : #{user.admin}
         .form-floating
           input(type="hidden", name="user" value=user)
           input#floatingbookname.form-control(type="text", name="bookname" placeholder="ชื่อปริญญานิพนธ์")
@@ -28,6 +26,12 @@ block content
             each teacher in teachers
               option(value=teacher.firstname)=teacher.firstname + ' ' + teacher.lastname
           label(for="floatingSelect") อาจารย์ที่ปรึกษา
+        .form-floating.mt-3
+          select#floatingSelect.form-select(name='category')
+            option(selected='') กรุณาเลือก
+            each category in categorys
+              option(value=category.name)=category.name
+          label(for="floatingSelect") หมวดหมู่
         .mt-3
           label(for="bookfile") เพิ่มไฟล์(PDF)
           input.form-control#bookfile(type="file", name="bookfile"  accept="application/pdf" required)

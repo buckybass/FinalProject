@@ -5,7 +5,7 @@ block content
       include ./components/sidebar
       .sidebar
         a(href='/managerefer') ข้อมูลปริญญานิพนธ์
-        a.active(href='/managefac') ข้อมูลคณะ
+        a.active(href='/managecategory') ข้อมูลหมวดหมู่
         a(href='/manageteacher') ข้อมูลอาจารย์
         a(href='/manageuser') ข้อมูลสมาชิก
     .col-md-7
@@ -13,17 +13,17 @@ block content
       include components/alert
         ul.list-group
           li.list-group-item
-            h1.text-center ข้อมูลคณะทั้งหมด
+            h1.text-center ข้อมูลหมวดหมู่ทั้งหมด
           li.list-group-item.list-group-item-info.d-flex.justify-content-between
-            h4 คณะ
-            form(action="/addfaculty", method="post")
+            h4 หมวดหมู่
+            form(action="/category/create", method="post")
               .input-group
                 input.form-control(type="text" name="faculty_name" placeholder="เพิ่มคณะ" required)
                 button.btn.btn-success(type="submit") +
           each facultys in faculty
             li.list-group-item.d-flex.justify-content-between.align-items-center
               span.me-auto=facultys.name
-              form.d-none.me-auto(action=`/editfaculty/${facultys._id}` method="post")
+              form.d-none.me-auto(action=`/category/update/${facultys._id}` method="post")
                 .input-group
                   input.form-control.form-control-sm(type="text" name="faculty_name" value=facultys.name)
                   button.btn.btn-success.btn-sm.me-3 บันทึก
@@ -41,7 +41,7 @@ block content
       }
       function deleteFaculty(id) {
         if (confirm('ต้องการลบใช่หรือไม่') == true) {
-          location.replace(`/deletefaculty/${id}`)
+          location.replace(`/category/delete/${id}`)
         } else {
           console.log('cancel')
         }
