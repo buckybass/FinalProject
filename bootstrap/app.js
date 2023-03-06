@@ -1,7 +1,7 @@
 const dotenv = require('dotenv')
 const express = require('express')
 const path = require('path')
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 const session = require('express-session')
 // const connectRedis = require('connect-redis')
 const connectFlash = require('connect-flash')
@@ -12,7 +12,7 @@ const bodyParser = require('body-parser')
 
 dotenv.config()
 
-// mongoose.connect('mongodb+srv://Admin:Password@monkey.yasgbdt.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://Admin:Password@monkey.yasgbdt.mongodb.net/rusisthesis?retryWrites=true&w=majority')
 // const RedisStore = connectRedis(session)
 // const redisClient = redis.createClient({
 //   legacyMode: true,
