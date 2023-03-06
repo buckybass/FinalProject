@@ -1,5 +1,5 @@
 const teachers = require('../models/Users')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 module.exports = async (req, res) => {
   const redirectWithError = (msg, url) => {
     req.flash('err', msg)
