@@ -5,20 +5,20 @@ block content
     h1 ค้นหาฐานข้อมูลปริญญานิพนธ์
     .card.mt-3
       .card-body
-        form
-          input.form-control(type="text", name="",placeholder="ค้นหาเลย")
+        form(action=`#`)
+          input.form-control(type="text", name="keyword",placeholder="ค้นหาเลย")
           .row.mt-3
             .col-md-6
               select#floatingSelect.form-select(name='category')
-                option(selected='') กรุณาเลือกหมวดหมู่ปริญญานิพนธ์
+                option(disabled selected  ) กรุณาเลือกหมวดหมู่ปริญญานิพนธ์
                 each category in categorys
                   option(value=category.name)=category.name
             .col-md-6
               select.form-select(name='teacher')
-                option(selected='') กรุณาเลือกอาจารย์ที่ปรึกษา
+                option(disabled selected) กรุณาเลือกอาจารย์ที่ปรึกษา
                 each teacher in teachers
                   option(value=teacher.firstname)=teacher.firstname + ' ' + teacher.lastname
-          input.btn.btn-success.mt-2(type="button", value="ค้นหา")
+          input.btn.btn-success.mt-2(type="submit", value="ค้นหา")
     .card.mt-3
       .card-body
         h1.text-center ข้อมูลปริญญานิพนธ์ทั้งหมด
@@ -27,9 +27,10 @@ block content
             tr
               th(scope='col')
               th(scope='col') ชื่อปริญญานิพนธ์
+              th(scope='col') หมวดหมู่
               th(scope='col') ผู้จัดทำ
+              th(scope='col') อาจารย์ที่ปรึกษา
               th(scope='col') สาขา
-              th(scope='col') คณะ
           tbody
             -let i=0
             each books in book
@@ -37,7 +38,9 @@ block content
                 th(scope='row')=i=i+1
                 td
                   a(href=`/book/detail/${books._id}`) #{books.bookname}
+                td=books.category
                 td=books.firstname+' '+books.lastname
+                td=books.teacher
                 td=books.branch
-                td=books.faculty
+
 

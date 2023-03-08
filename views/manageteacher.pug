@@ -43,7 +43,7 @@ block content
                       td=teachers.email
                       td
                         if teachers.oldpassword
-                          a.text-danger(href="#" onclick=`showpassword(event,${teachers.oldpassword})`) ยังไม่ได้เปลี่ยนรหัสผ่าน(คลิ๊กเพื่อดู)
+                          a.text-danger(href="#" onclick=`showpassword(event,${teachers.oldpassword})`) รหัสผ่าน(คลิ๊กเพื่อดู)
                         else
                           div เปลี่ยนรหัสแล้ว
                       td.d-flex
@@ -52,7 +52,7 @@ block content
     script.
       function showpassword (event,password) {
         const parent = event.target.parentNode
-        event.target.innerText = event.target.innerText === 'ยังไม่ได้เปลี่ยนรหัสผ่าน(คลิ๊กเพื่อดู)' ? password : 'ยังไม่ได้เปลี่ยนรหัสผ่าน(คลิ๊กเพื่อดู)'
+        event.target.innerText = event.target.innerText === 'รหัสผ่าน(คลิ๊กเพื่อดู)' ? password : 'รหัสผ่าน(คลิ๊กเพื่อดู)'
       }
       function deleteTeachers(id) {
         if (confirm('ต้องการลบใช่หรือไม่') == true) {
