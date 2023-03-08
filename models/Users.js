@@ -14,7 +14,7 @@ const schema = new Schema({
   faculty: String,
   branch: String,
   avatarUrl: String,
-  studentNumber: Number,
+  studentnumber: Number,
   oauth: {
     facebook: String,
     google: String

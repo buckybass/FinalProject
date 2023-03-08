@@ -1,0 +1,16 @@
+.card.mt-3
+      .card-body
+        form(action="/search" method="get")
+          input.form-control(type="text", name="keyword",placeholder="ค้นหาเลย")
+          .row.mt-3
+            .col-md-6
+              select#floatingSelect.form-select(name='category')
+                option(disabled selected) กรุณาเลือกหมวดหมู่ปริญญานิพนธ์
+                each category in categorys
+                  option(value=category.name)=category.name
+            .col-md-6
+              select.form-select(name='teacher')
+                option(disabled selected) กรุณาเลือกอาจารย์ที่ปรึกษา
+                each teacher in teachers
+                  option(value=teacher.firstname)=teacher.firstname + ' ' + teacher.lastname
+          input.btn.btn-success.mt-2(type="submit", value="ค้นหา")

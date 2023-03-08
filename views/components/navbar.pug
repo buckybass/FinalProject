@@ -13,12 +13,12 @@ div(style='background-color:#2759be;')
           a.nav-link.text-center.m-3.text-light(href="/about")
             h5 เกี่ยวกับระบบ
           if user
+            if !user.teacher
+              a.nav-link.text-center.m-3.text-light(href='/status')
+                h5 เช็คสถานะ
             if user.admin
               a.nav-link.text-center.m-3.text-light(href="/managerefer")
                 h5 จัดการข้อมูล
-            if !user.admin
-              a.nav-link.text-center.m-3.text-light(href='/status')
-                h5 เช็คสถานะ
             if user.teacher
               a.nav-link.text-center.m-3.text-light(href='/manageapprove')
                 h5 การอนุมัติ
