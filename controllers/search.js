@@ -6,7 +6,20 @@ module.exports = async (req, res) => {
   const Category = req.query.category
   const Teacher = req.query.teacher
 
-  const response = (_err, Book) => {
+  const where = {}
+  if (Keyword || Category || Teacher) {
+    where.$and = []
+  }
+  if (Keyword) {
+    where.$and.push({ bookname: { $regex: new RegExp(Keyword, 'i') } })
+  }
+  if (Category) {
+    where.$and.push({ category: Category })
+  }
+  if (Teacher) {
+    where.$and.push({ teacher: Teacher })
+  }
+  await book.find(where).exec((_err, Book) => {
     teacher.find({ teacher: true }).exec((_err, Teachers) => {
       category.find().exec((_err, Categotys) => {
         res.render('search', {
@@ -17,56 +30,5 @@ module.exports = async (req, res) => {
         })
       })
     })
-  }
-
-  if (Keyword || Category || Teacher) {
-    if (Keyword && Category) {
-      book
-        .find({
-          approve: true,
-          $and: [
-            { bookname: { $regex: new RegExp(Keyword, 'i') } },
-            { category: Category }
-          ]
-        })
-        .exec(response)
-      return
-    }
-    if (Keyword && Teacher) {
-      book
-        .find({
-          $and: [{ bookname: { $regex: new RegExp(Keyword, 'i') } }, { teacher: Teacher }]
-        })
-        .exec(response)
-      return
-    }
-    if (Category && Teacher) {
-      book
-        .find({
-          $and: [{ category: Category }, { teacher: Teacher }]
-        })
-        .exec(response)
-      return
-    }
-    if (Keyword) {
-      book
-        .find({
-          $and: [{ bookname: { $regex: new RegExp(Keyword, 'i') } }]
-        })
-        .exec(response)
-      return
-    }
-    book
-      .find({
-        approve: true,
-        $or: [
-          // { bookname: { $regex: Keyword } },
-          { category: Category },
-          { teacher: Teacher }
-        ]
-      })
-      .exec(response)
-    return
-  }
-  book.find({ approve: true }).exec(response)
+  })
 }
