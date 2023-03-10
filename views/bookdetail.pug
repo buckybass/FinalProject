@@ -22,6 +22,8 @@ block content
           .text-center.mt-3
             iframe(style='width:550px;height:350px', src='https://online.anyflip.com/wwcwx/usii/index.html', seamless='seamless', scrolling='no', frameborder='0', allowtransparency='true', allowfullscreen='true')
           .d-flex.justify-content-center.mt-3
+            a.btn.btn-primary(href=`/book/${book.filename}` target="_blank" style="width:70px") อ่าน
+            div(style="width:20px")
             if user
               button.btn.btn-info(type='button', data-bs-toggle='modal', data-bs-target='#exampleModal', data-bs-whatever='@getbootstrap') ขอสิทธิ์อ้างอิงข้อมูล
               #exampleModal.modal.fade(tabindex='-1', aria-labelledby='exampleModalLabel', aria-hidden='true')
