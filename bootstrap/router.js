@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     next(null, path.join(__dirname, '../public/book'))
   },
   filename (req, file, next) {
-    next(null, file.fieldname)
+    next(null, file.fieldname + '-' + Date.now() + '.pdf')
   }
 })
 
