@@ -6,9 +6,10 @@ module.exports = async (req, res) => {
   const Category = req.query.category
   const Teacher = req.query.teacher
 
-  const where = {}
+  const where = { approve: true }
   if (Keyword || Category || Teacher) {
     where.$and = []
+    where.$and.push({ approve: true })
   }
   if (Keyword) {
     where.$and.push({ bookname: { $regex: new RegExp(Keyword, 'i') } })
