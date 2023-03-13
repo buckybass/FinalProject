@@ -1,5 +1,5 @@
 const book = require('../models/book')
-const bookrefer = require('../models/bookrefer')
+const bookrefer = require('../models/bookRefer')
 const bookdowload = require('../models/bookDowload')
 
 module.exports = (req, res) => {
