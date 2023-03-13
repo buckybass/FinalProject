@@ -36,8 +36,13 @@ block content
                             input(type="hidden", name="user" value=user)
                             input(type="hidden", name="bookname" value=book.bookname)
                             .mb-3
-                              label.col-form-label(for='recipient-name') หัวข้อข้อมูลที่นำไปใช้:
-                              input#recipient-name.form-control(type='text' name="title_ref")
+                              label(for='title') เลือกหัวข้อ
+                              select.form-select#cars(name='title', required='')
+                                option(value='') กรุณาเลือก
+                                option(value='นำไปทำวิจัย') นำไปทำวิจัย
+                                option(value='นำไปใช้ทำโครงงาน') นำไปใช้ทำโครงงาน
+                                option(value='นำไปใช้ทำปริญญานิพนธ์') นำไปใช้ทำปริญญานิพนธ์
+                                option(value='อื่นๆ') อื่นๆ
                             .mb-3
                               label.col-form-label(for='message-text') เนื้อหาข้อมูล:
                               textarea#message-text.form-control(name="content_ref")
