@@ -1,4 +1,4 @@
-const bookrefer = require('../models/bookrefer')
+const bookrefer = require('../models/someFileName')
 
 module.exports = (req, res) => {
   bookrefer.find({ bookid: req.params.id }).exec((_err, doc) => {
