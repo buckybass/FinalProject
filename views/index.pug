@@ -23,14 +23,14 @@ block content
             h4 อาจารย์ที่ปรึกษา
           each teacher in teachers
             li.list-group-item
-              a(href=`http://localhost:4000/search?&teacher=${teacher.firstname}`)=teacher.firstname+' '+teacher.lastname
+              a(href=`/search?&teacher=${teacher.firstname}`)=teacher.firstname+' '+teacher.lastname
       .col-md-6.mt-3
         ul.list-group
           li.list-group-item.list-group-item-info
             h4 หมวดหมู่ปริญญานิพนธ์
           each category in categorys
             li.list-group-item
-              a(href=`http://localhost:4000/search?category=${category.name}`)=category.name
+              a(href=`/search?category=${category.name}`)=category.name
     .row.justify-content-evenly
       .col-md-3.text-center.card.mt-3
         .card-body
