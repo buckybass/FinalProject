@@ -23,7 +23,7 @@ block content
                 each books in book
                   tr
                     th(scope='row')=i=i+1
-                    td
+                    td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:400px;")
                       a(href=`/book/detail/${books._id}`) #{books.bookname}
                     td=books.category
                     td=books.firstname+' '+books.lastname

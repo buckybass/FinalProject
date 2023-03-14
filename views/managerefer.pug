@@ -17,11 +17,11 @@ block content
               table.table.mt-3
                 thead
                   tr
-                    th.text-center(scope='col') ลำดับ
-                    th.text-center(scope='col') ชื่อเล่ม
-                    th.text-center(scope='col') ชื่อจัดทำ
-                    th.text-center(scope='col') จำนวนผู้ขอสิทธิ์
-                    th.text-center(scope='col') จำนวนผู้ดาวน์โหลด
+                    th(scope='col') ลำดับ
+                    th(scope='col') ชื่อเล่ม
+                    th(scope='col') ชื่อจัดทำ
+                    th(scope='col') จำนวนผู้ขอสิทธิ์
+                    th(scope='col') จำนวนผู้ดาวน์โหลด
                 tbody
                   each bookrefer in bookrefers
                     if bookrefer.approve
@@ -30,16 +30,16 @@ block content
                       -var time = d.getHours()+':'+d.getMinutes()
                       -var day = d.getDate()+' '+momth[(d.getMonth()-1)]+' '+d.getFullYear()
                       tr
-                        th.text-center(scope='row')=i+1
-                        td.text-center
+                        th(scope='row')=i+1
+                        td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:400px;")
                           a(href=`/book/detail/${bookrefer._id}`)=bookrefer.bookname
-                        td.text-center=bookrefer.firstname+' '+bookrefer.lastname
-                        td.text-center
+                        td=bookrefer.firstname+' '+bookrefer.lastname
+                        td
                           if bookrefer.bookRefer.length
                             a(href=`/status/refer/${bookrefer._id}`)=bookrefer.bookRefer.length
                           else
                             div 0
-                        td.text-center
+                        td
                           if bookdowloads[i].bookDowload.length
                             a(href=`/status/dowload/${bookrefer._id}`)=bookdowloads[i].bookDowload.length
                           else

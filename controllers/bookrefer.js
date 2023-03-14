@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
   const data = {
     userid: user._id,
     bookid: req.params.id,
-    title: req.body.title_ref,
+    title: req.body.title,
     content: req.body.content_ref,
     firstname: user.firstname,
     lastname: user.lastname,
