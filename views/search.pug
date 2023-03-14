@@ -1,5 +1,15 @@
 extends layout/main
 block content
+  style.
+    .title-ellipsis{
+      overflow:hidden;
+      white-space:nowrap;
+      text-overflow:ellipsis;
+      max-width:400px;
+    }
+    td {
+      white-space:nowrap;
+    }
   .container.mt-3
     include components/alert
     h1 ค้นหาฐานข้อมูลปริญญานิพนธ์
@@ -9,26 +19,27 @@ block content
         h1.text-center ข้อมูลปริญญานิพนธ์ทั้งหมด
         if book
           if book[0]
-            table.table
-              thead
-                tr
-                  th(scope='col')
-                  th(scope='col') ชื่อปริญญานิพนธ์
-                  th(scope='col') หมวดหมู่
-                  th(scope='col') ผู้จัดทำ
-                  th(scope='col') อาจารย์ที่ปรึกษา
-                  th(scope='col') สาขา
-              tbody
-                -let i=0
-                each books in book
+            .div(style="overflow-x:auto;")
+              table.table
+                thead
                   tr
-                    th(scope='row')=i=i+1
-                    td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:400px;")
-                      a(href=`/book/detail/${books._id}`) #{books.bookname}
-                    td=books.category
-                    td=books.firstname+' '+books.lastname
-                    td=books.teacher
-                    td=books.branch
+                    th(scope='col')
+                    th(scope='col') ชื่อปริญญานิพนธ์
+                    th(scope='col') หมวดหมู่
+                    th(scope='col') ผู้จัดทำ
+                    th(scope='col') อาจารย์ที่ปรึกษา
+                    th(scope='col') สาขา
+                tbody
+                  -let i=0
+                  each books in book
+                    tr
+                      th(scope='row')=i=i+1
+                      td.title-ellipsis
+                        a(href=`/book/detail/${books._id}`) #{books.bookname}
+                      td=books.category
+                      td=books.firstname+' '+books.lastname
+                      td=books.teacher
+                      td=books.branch
           else
             h1.text-center.text-warning ไม่พบข้อมูล
 

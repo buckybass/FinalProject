@@ -20,5 +20,15 @@ html(lang="en")
   body(style="background-color:#f4c759;")
     block body
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js")
+    script(src='https://code.jquery.com/jquery-3.6.3.js', integrity='sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=', crossorigin='anonymous')
+    script.
+      console.log('test')
+      $(document).ready(function() {
+      $(".btn-hamburger").on("click", function() {
+      $(".flex-item").toggleClass("nav-active")
+      $(".flex-button").toggleClass("nav-active")
+
+      })
+      })
     .d-flex.justify-content-center.mt-4
       img(src="/rus.png" style=("width:300px"), alt="")

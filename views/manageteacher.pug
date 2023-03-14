@@ -1,5 +1,9 @@
 extends layout/main
 block content
+  style.
+    td {
+      white-space:nowrap;
+    }
   .row
     .col-md-3
       include ./components/sidebar
@@ -27,27 +31,28 @@ block content
               .d-flex.justify-content-center.mt-3
                 button.btn.btn-success(type="submit") เพิ่ม
             -let=i=0
-            table.table.mt-3
-              thead
-                tr
-                  th(scope='col') ลำดับ
-                  th(scope='col') ชื่อ
-                  th(scope='col') อีเมล
-                  th(scope='col') รหัสผ่าน
-                  th(scope='col')
-              tbody
-                each teachers in teacher
-                    tr
-                      th(scope='row')=i=i+1
-                      td=teachers.firstname + ' ' + teachers.lastname
-                      td=teachers.email
-                      td
-                        if teachers.oldpassword
-                          a.text-danger(href="#" onclick=`showpassword(event,${teachers.oldpassword})`) รหัสผ่าน(คลิ๊กเพื่อดู)
-                        else
-                          div เปลี่ยนรหัสแล้ว
-                      td.d-flex
-                        button.btn.btn-sm.btn-danger(onclick=`deleteTeachers('${teachers.id}')`) ลบ
+            .div(style="overflow-x:auto;")
+              table.table.mt-3
+                thead
+                  tr
+                    th(scope='col') ลำดับ
+                    th(scope='col') ชื่อ
+                    th(scope='col') อีเมล
+                    th(scope='col') รหัสผ่าน
+                    th(scope='col')
+                tbody
+                  each teachers in teacher
+                      tr
+                        th(scope='row')=i=i+1
+                        td=teachers.firstname + ' ' + teachers.lastname
+                        td=teachers.email
+                        td
+                          if teachers.oldpassword
+                            a.text-danger(href="#" onclick=`showpassword(event,${teachers.oldpassword})`) รหัสผ่าน(คลิ๊กเพื่อดู)
+                          else
+                            div เปลี่ยนรหัสแล้ว
+                        td.d-flex
+                          button.btn.btn-sm.btn-danger(onclick=`deleteTeachers('${teachers.id}')`) ลบ
 
     script.
       function showpassword (event,password) {

@@ -1,5 +1,15 @@
 extends layout/main
 block content
+  style.
+    .title-ellipsis{
+      overflow:hidden;
+      white-space:nowrap;
+      text-overflow:ellipsis;
+      max-width:400px;
+    }
+    td {
+      white-space:nowrap;
+    }
   .row
     .col-md-3
       include ./components/sidebar
@@ -14,35 +24,36 @@ block content
           .card-body
             h1.text-center ข้อมูลการปริญญานิพนธ์ทั้งหมด
             -let i = 0
-              table.table.mt-3
-                thead
-                  tr
-                    th(scope='col') ลำดับ
-                    th(scope='col') ชื่อเล่ม
-                    th(scope='col') ชื่อจัดทำ
-                    th(scope='col') จำนวนผู้ขอสิทธิ์
-                    th(scope='col') จำนวนผู้ดาวน์โหลด
-                tbody
-                  each bookrefer in bookrefers
-                    if bookrefer.approve
-                      -var d = new Date(bookrefer.createdAt)
-                      -var momth = ['มกราคม','กุมภาพันธ','มีนาคม','เมษายน','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
-                      -var time = d.getHours()+':'+d.getMinutes()
-                      -var day = d.getDate()+' '+momth[(d.getMonth()-1)]+' '+d.getFullYear()
-                      tr
-                        th(scope='row')=i+1
-                        td(style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:400px;")
-                          a(href=`/book/detail/${bookrefer._id}`)=bookrefer.bookname
-                        td=bookrefer.firstname+' '+bookrefer.lastname
-                        td
-                          if bookrefer.bookRefer.length
-                            a(href=`/status/refer/${bookrefer._id}`)=bookrefer.bookRefer.length
-                          else
-                            div 0
-                        td
-                          if bookdowloads[i].bookDowload.length
-                            a(href=`/status/dowload/${bookrefer._id}`)=bookdowloads[i].bookDowload.length
-                          else
-                            div 0
+              .div(style="overflow-x:auto;")
+                table.table.mt-3
+                  thead
+                    tr
+                      th(scope='col') ลำดับ
+                      th(scope='col') ชื่อเล่ม
+                      th(scope='col') ชื่อจัดทำ
+                      th(scope='col') จำนวนผู้ขอสิทธิ์
+                      th(scope='col') จำนวนผู้ดาวน์โหลด
+                  tbody
+                    each bookrefer in bookrefers
+                      if bookrefer.approve
+                        -var d = new Date(bookrefer.createdAt)
+                        -var momth = ['มกราคม','กุมภาพันธ','มีนาคม','เมษายน','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']
+                        -var time = d.getHours()+':'+d.getMinutes()
+                        -var day = d.getDate()+' '+momth[(d.getMonth()-1)]+' '+d.getFullYear()
+                        tr
+                          th(scope='row')=i+1
+                          td.title-ellipsis
+                            a(href=`/book/detail/${bookrefer._id}`)=bookrefer.bookname
+                          td=bookrefer.firstname+' '+bookrefer.lastname
+                          td
+                            if bookrefer.bookRefer.length
+                              a(href=`/status/refer/${bookrefer._id}`)=bookrefer.bookRefer.length
+                            else
+                              div 0
+                          td
+                            if bookdowloads[i].bookDowload.length
+                              a(href=`/status/dowload/${bookrefer._id}`)=bookdowloads[i].bookDowload.length
+                            else
+                              div 0
 
-                    -i+=1
+                      -i+=1

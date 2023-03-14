@@ -1,5 +1,9 @@
 extends layout/main
 block content
+  style.
+    td {
+      white-space:nowrap;
+    }
   .row
     .col-md-3
       include ./components/sidebar
@@ -15,6 +19,7 @@ block content
           .card-body
             h1.text-center ข้อมูลสมาชิกทั้งหมด
             -let i = 0
+            .div(style="overflow-x:auto;")
               table.table.mt-3
                 thead
                   tr

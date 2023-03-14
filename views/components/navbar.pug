@@ -1,9 +1,63 @@
+style.
+
+  img{
+    width:148px;
+  }
+
+  .flex-logo{
+    display:flex
+  }
+
+  .flex-item{
+    display:flex;
+  }
+
+  .flex-button{
+    display:flex;
+  }
+
+  .btn-hamburger{
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+  }
+
+  .btn-hamburger img{
+    width:50px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .btn-hamburger{
+      display:block;
+      position:absolute;
+      right:10px;
+      top:1px
+    }
+    img{
+    width:150px;
+    }
+    .flex-logo{
+      display:flex;
+      flex-direction: column;
+    }
+    .flex-item{
+      display:none;
+      flex-direction: column;
+    }
+    .flex-button{
+      display:none;
+    }
+    .nav-active{
+      display:flex
+    }
+    }
 div(style='background-color:#2759be;')
   .container
-    .d-flex.justify-content-between.align-items-center
+    .flex-logo.justify-content-between.align-items-center
       a(href="/", style='text-decoration:none; color:white;')
-            img(src="/ruslogo.png" style="width:148px", alt="")
-      .d-flex.justify-content-center.align-items-center
+            img(src="/ruslogo.png", alt="")
+      .flex-item.justify-content-center.align-items-center
           a.nav-link.text-center.m-3.text-light(href="/")
             h5 หน้าแรก
           a.nav-link.text-center.m-3.text-light(href="/search")
@@ -22,21 +76,23 @@ div(style='background-color:#2759be;')
             if user.teacher
               a.nav-link.text-center.m-3.text-light(href='/manageapprove')
                 h5 การอนุมัติ
-      if user
-        div
-          a.btn.btn-primary.m-2(href='/user') #{user.firstname}
-          a.btn.btn-danger.m-2(href='/logout') ออกจากระบบ
-        ul.dropdown-menu
-          li
-            a.dropdown-item(href='/status') เช็คสถานะการลงทะเบียน
-          if user.admin
+      .flex-button
+        if user
+          div
+            a.btn.btn-primary.m-2(href='/user') #{user.firstname}
+            a.btn.btn-danger.m-2(href='/logout') ออกจากระบบ
+          ul.dropdown-menu
             li
-              a.dropdown-item(href='') จัดการข้อมูลผู้ดูแลระบบ
-          li
-      else
-        div
-          a.btn.btn-primary.m-2(href="/login") เข้าสู่ระบบ
-          a.btn.btn-primary.m-2(href="/registerout") สมัครสมาชิก
-
+              a.dropdown-item(href='/status') เช็คสถานะการลงทะเบียน
+            if user.admin
+              li
+                a.dropdown-item(href='') จัดการข้อมูลผู้ดูแลระบบ
+            li
+        else
+          div
+            a.btn.btn-primary.m-2(href="/login") เข้าสู่ระบบ
+            a.btn.btn-primary.m-2(href="/registerout") สมัครสมาชิก
+      button.btn-hamburger
+        img(src='https://icon-library.com/images/three-line-menu-icon/three-line-menu-icon-28.jpg', alt='')
 
 
